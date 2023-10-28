@@ -16,7 +16,7 @@ import org.apache.tomcat.dbcp.dbcp2.PoolingDriver;
 import org.apache.tomcat.dbcp.pool2.impl.GenericObjectPool;
 import org.apache.tomcat.dbcp.pool2.impl.GenericObjectPoolConfig;
 
-public class DBCPInitListener implements ServletContextListener {
+public class K0930_DBCPInitListener implements ServletContextListener {
 
 	@Override
 	public void contextInitialized(ServletContextEvent sce) {

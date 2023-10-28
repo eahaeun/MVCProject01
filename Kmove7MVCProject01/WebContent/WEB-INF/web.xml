@@ -4,7 +4,7 @@
   
   <!-- dbcp 설정 리스너 -->
 	<listener>
-		<listener-class>jdbc.DBCPInitListener</listener-class>
+		<listener-class>jdbc.K0930_DBCPInitListener</listener-class>
 	</listener>
 
 	<context-param>
@@ -24,7 +24,7 @@
 	<!-- 인코딩 필터 -->
 	<filter>
 		<filter-name>encodingFilter</filter-name>
-		<filter-class>util.CharacterEncodingFilter</filter-class>
+		<filter-class>mvc.filter.K0920_CharacterEncodingFilter</filter-class>
 		<init-param>
 			<param-name>encoding</param-name>
 			<param-value>utf-8</param-value>
@@ -39,7 +39,7 @@
 	<!-- 핸들러 -->
 	<servlet>
 		<servlet-name>ControllerUsingURI</servlet-name>
-		<servlet-class>mvc.controller.ControllerUsingURI</servlet-class>
+		<servlet-class>mvc.controller.K0970_ControllerUsingURI</servlet-class>
 		<init-param>
 			<param-name>configFile</param-name>
 			<param-value>/WEB-INF/commandHandlerURI.properties</param-value>
@@ -53,9 +53,10 @@
 	</servlet-mapping>
 	
 	<!-- 로그인 검사 필터 -->
+	<!--  
 	<filter>
 		<filter-name>LoginCheckFilter</filter-name>
-		<filter-class>filter.LoginCheckFilter</filter-class>
+		<filter-class>mvc.filter.K0910_LoginCheckFilter</filter-class>
 	</filter>
 
 	<filter-mapping>
@@ -65,6 +66,7 @@
 		<url-pattern>/article/modify.do</url-pattern>
 		<url-pattern>/article/delete.do</url-pattern>
 	</filter-mapping>
+	-->
   
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>

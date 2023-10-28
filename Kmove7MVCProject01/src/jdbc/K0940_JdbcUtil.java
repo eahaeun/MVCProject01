@@ -7,7 +7,7 @@ import java.sql.Statement;
 
 //닫고 롤백하는 유틸
 
-public class JdbcUtil {
+public class K0940_JdbcUtil {
 	public static void close(ResultSet rs) {
 		if(rs!=null) {
 			try {

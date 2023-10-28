@@ -3,7 +3,7 @@ package mvc.command;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-public class NullHandler implements CommandHandler {
+public class K0961_NullHandler implements K0960_CommandHandler {
 
 	@Override
 	public String process(HttpServletRequest req, HttpServletResponse res) throws Exception {
