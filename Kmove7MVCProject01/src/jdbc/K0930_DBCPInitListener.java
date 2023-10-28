@@ -8,13 +8,14 @@ import java.util.Properties;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 
-import org.apache.tomcat.dbcp.dbcp2.ConnectionFactory;
-import org.apache.tomcat.dbcp.dbcp2.DriverManagerConnectionFactory;
-import org.apache.tomcat.dbcp.dbcp2.PoolableConnection;
-import org.apache.tomcat.dbcp.dbcp2.PoolableConnectionFactory;
-import org.apache.tomcat.dbcp.dbcp2.PoolingDriver;
-import org.apache.tomcat.dbcp.pool2.impl.GenericObjectPool;
-import org.apache.tomcat.dbcp.pool2.impl.GenericObjectPoolConfig;
+import org.apache.commons.dbcp2.ConnectionFactory;
+import org.apache.commons.dbcp2.DriverManagerConnectionFactory;
+import org.apache.commons.dbcp2.PoolableConnection;
+import org.apache.commons.dbcp2.PoolableConnectionFactory;
+import org.apache.commons.dbcp2.PoolingDriver;
+import org.apache.commons.pool2.impl.GenericObjectPool;
+import org.apache.commons.pool2.impl.GenericObjectPoolConfig;
+
 
 public class K0930_DBCPInitListener implements ServletContextListener {
 
@@ -24,7 +25,6 @@ public class K0930_DBCPInitListener implements ServletContextListener {
 		//web.xml에 설정한 모든 서블릿에서 사용할 수 있는 파라미터 값(context-param) 받아오기
 		String poolConfig = sce.getServletContext().getInitParameter("poolConfig");
 		Properties prop = new Properties();
-		System.out.println(poolConfig);
 		try {
 			//키=값으로 구성된 문자열로부터 프로퍼티 로딩
 			prop.load(new StringReader(poolConfig));
