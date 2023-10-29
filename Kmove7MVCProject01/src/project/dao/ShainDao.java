@@ -13,18 +13,16 @@ public class ShainDao {
 	public Shain selectByNo(Connection conn, String shain_no) throws SQLException {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		Shain shain = null;
+
 		try {
 			pstmt = conn.prepareStatement("select * from shain where shain_no = ?");
-			pstmt.setString(1, shain_no.trim());
+			pstmt.setString(1, shain_no);
 			rs = pstmt.executeQuery();
+			Shain shain = null;
 			if (rs.next()) {
 				shain = convertShain(rs);
 			}
 			return shain;
-		} catch(Exception e){
-			e.printStackTrace();
-			return null;
 		} finally {
 			JdbcUtil.close(rs);
 			JdbcUtil.close(pstmt);
