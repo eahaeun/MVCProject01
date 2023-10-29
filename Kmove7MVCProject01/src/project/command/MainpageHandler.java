@@ -3,10 +3,10 @@ package project.command;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import mvc.command.K0960_CommandHandler;
+import mvc.command.CommandHandler;
 
-public class K0143_MainpageHandler implements K0960_CommandHandler {
-	private static final String FORM_VIEW = "/WEB-INF/view/main/K0800_mainpage.jsp";
+public class MainpageHandler implements CommandHandler {
+	private static final String FORM_VIEW = "/WEB-INF/view/main/mainpage.jsp";
 	@Override
 	public String process(HttpServletRequest req, HttpServletResponse res) throws Exception {
 		if (req.getMethod().equalsIgnoreCase("GET")) {

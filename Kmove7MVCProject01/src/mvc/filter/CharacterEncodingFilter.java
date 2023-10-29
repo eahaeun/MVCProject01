@@ -9,7 +9,7 @@ import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 
-public class K0920_CharacterEncodingFilter implements Filter {
+public class CharacterEncodingFilter implements Filter {
 	private String encoding;
 	
 	@Override

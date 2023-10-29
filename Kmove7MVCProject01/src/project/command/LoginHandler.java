@@ -6,14 +6,14 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import mvc.command.K0960_CommandHandler;
-import project.exception.K0701_LoginFailException;
-import project.model.bean.K0110_Kanrisha;
-import project.model.service.K0130_loginService;
+import mvc.command.CommandHandler;
+import project.exception.LoginFailException;
+import project.model.bean.Kanrisha;
+import project.model.service.LoginService;
 
-public class K0140_LoginHandler implements K0960_CommandHandler {
-	private static final String FORM_VIEW = "/WEB-INF/view/main/K0150_login.jsp";
-	private K0130_loginService loginService = new K0130_loginService();
+public class LoginHandler implements CommandHandler {
+	private static final String FORM_VIEW = "/WEB-INF/view/main/login.jsp";
+	private LoginService loginService = new LoginService();
 
 	@Override
 	public String process(HttpServletRequest req, HttpServletResponse res) throws Exception {
@@ -49,10 +49,10 @@ public class K0140_LoginHandler implements K0960_CommandHandler {
 		}
 		
 		try {
-			K0110_Kanrisha kanrisha = loginService.login(id, password);
+			Kanrisha kanrisha = loginService.login(id, password);
 			req.getSession().setAttribute("authUser", kanrisha);
-			return "/WEB-INF/view/main/K0800_mainpage.jsp";
-		} catch(K0701_LoginFailException e) {
+			return "/WEB-INF/view/main/mainpage.jsp";
+		} catch(LoginFailException e) {
 			errors.put("idOrPwNotMatch", Boolean.TRUE);
 			return FORM_VIEW;
 		}

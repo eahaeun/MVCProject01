@@ -181,7 +181,8 @@ ul.submenu li a:hover {
 				<label for="id">ID:</label> <input type="text" name="kanrisha_uid">
 			</div>
 			<div>
-				<label for="pw">PW:</label> <input type="password" name="kanrisha_pw">
+				<label for="pw">PW:</label> <input type="password"
+					name="kanrisha_pw">
 			</div>
 			<div class="button-container">
 				<button type="submit" class="search-button" formaction="join.do"
@@ -190,6 +191,17 @@ ul.submenu li a:hover {
 					formmethod="post">ログイン</button>
 			</div>
 		</div>
+
+		<c:if test="${errors.idOrPwNotMatch}">
+			<script>
+				alert('아이디 혹은 암호가 일치하지 않습니다.');
+			</script>
+		</c:if>
+		<c:if test="${errors.id or errors.password}">
+			<script>
+				alert('입력되지 않은 칸이 있습니다.');
+			</script>
+		</c:if>
 	</form>
 </body>
 </html>

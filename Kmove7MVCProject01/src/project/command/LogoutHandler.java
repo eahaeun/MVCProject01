@@ -4,9 +4,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import mvc.command.K0960_CommandHandler;
+import mvc.command.CommandHandler;
 
-public class K0142_LogoutHandler implements K0960_CommandHandler {
+public class LogoutHandler implements CommandHandler {
 
 	@Override
 	public String process(HttpServletRequest req, HttpServletResponse res) throws Exception {
@@ -15,7 +15,7 @@ public class K0142_LogoutHandler implements K0960_CommandHandler {
 		if(session != null) {
 			session.invalidate();
 		}
-		return "/WEB-INF/view/main/K0150_login.jsp";
+		return "/WEB-INF/view/main/login.jsp";
 	}
 
 }

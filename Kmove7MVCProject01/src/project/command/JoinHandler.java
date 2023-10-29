@@ -6,15 +6,15 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import mvc.command.K0960_CommandHandler;
-import project.exception.K0700_DuplicatedException;
-import project.model.request.K0120_JoinRequest;
-import project.model.service.K0131_JoinService;
+import mvc.command.CommandHandler;
+import project.exception.DuplicatedException;
+import project.model.request.JoinRequest;
+import project.model.service.JoinService;
 
-public class K0141_JoinHandler implements K0960_CommandHandler {
+public class JoinHandler implements CommandHandler {
 
-	private static final String FORM_VIEW = "/WEB-INF/view/main/K0151_join.jsp";
-	private K0131_JoinService joinService = new K0131_JoinService();
+	private static final String FORM_VIEW = "/WEB-INF/view/main/join.jsp";
+	private JoinService joinService = new JoinService();
 
 	@Override
 	public String process(HttpServletRequest req, HttpServletResponse res) throws Exception {
@@ -36,7 +36,7 @@ public class K0141_JoinHandler implements K0960_CommandHandler {
 	
 	private String processSubmit(HttpServletRequest req, HttpServletResponse res) {
 		//form에 입력된 정보 받아오기
-		K0120_JoinRequest joinReq = new K0120_JoinRequest();
+		JoinRequest joinReq = new JoinRequest();
 		joinReq.setKanrisha_uid(req.getParameter("kanrisha_uid"));
 		joinReq.setKanrisha_pw(req.getParameter("kanrisha_pw"));
 		joinReq.setKanrisha_nm(req.getParameter("kanrisha_nm"));
@@ -58,8 +58,8 @@ public class K0141_JoinHandler implements K0960_CommandHandler {
 			//joinService의 join이 Dao의 insert를 호출함
 			joinService.join(joinReq);
 			//joinSuccess.jsp로 포워딩
-			return "/WEB-INF/view/main/K0152_joinSuccess.jsp";
-		} catch(K0700_DuplicatedException e) {
+			return "/WEB-INF/view/main/joinSuccess.jsp";
+		} catch(DuplicatedException e) {
 			//중복 아이디가 존재하면 Map에 put
 			errors.put("duplicatedId", Boolean.TRUE);
 			return FORM_VIEW;

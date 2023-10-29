@@ -2,7 +2,7 @@ package project.model.request;
 
 import java.util.Map;
 
-public class K0120_JoinRequest {
+public class JoinRequest {
 	private String kanrisha_uid;
 	private String kanrisha_pw;
 	private String confirm_pw;
@@ -10,7 +10,7 @@ public class K0120_JoinRequest {
 
 	
 
-	public K0120_JoinRequest(String kanrisha_uid, String kanrisha_pw, String confirm_pw, String kanrisha_nm) {
+	public JoinRequest(String kanrisha_uid, String kanrisha_pw, String confirm_pw, String kanrisha_nm) {
 		super();
 		this.kanrisha_uid = kanrisha_uid;
 		this.kanrisha_pw = kanrisha_pw;
@@ -18,7 +18,7 @@ public class K0120_JoinRequest {
 		this.kanrisha_nm = kanrisha_nm;
 	}
 
-	public K0120_JoinRequest() {
+	public JoinRequest() {
 		super();
 		// TODO Auto-generated constructor stub
 	}

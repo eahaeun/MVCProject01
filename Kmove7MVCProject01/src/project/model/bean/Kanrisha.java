@@ -1,16 +1,16 @@
 package project.model.bean;
 
-public class K0110_Kanrisha {
+public class Kanrisha {
 	private String kanrisha_uid;
 	private String kanrisha_pw;
 	private String kanrisha_nm;
 	
 	
-	public K0110_Kanrisha() {
+	public Kanrisha() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public K0110_Kanrisha(String kanrisha_uid, String kanrisha_pw, String kanrisha_nm) {
+	public Kanrisha(String kanrisha_uid, String kanrisha_pw, String kanrisha_nm) {
 		super();
 		this.kanrisha_uid = kanrisha_uid;
 		this.kanrisha_pw = kanrisha_pw;

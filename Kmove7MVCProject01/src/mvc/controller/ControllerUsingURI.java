@@ -14,11 +14,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import mvc.command.K0960_CommandHandler;
-import mvc.command.K0961_NullHandler;
+import mvc.command.CommandHandler;
+import mvc.command.NullHandler;
 
-public class K0970_ControllerUsingURI extends HttpServlet {
-	private Map<String, K0960_CommandHandler> commandHandlerMap = new HashMap<>();
+public class ControllerUsingURI extends HttpServlet {
+	private Map<String, CommandHandler> commandHandlerMap = new HashMap<>();
 	
 	public void init() throws ServletException {
 		String configFile = getInitParameter("configFile");
@@ -41,7 +41,7 @@ public class K0970_ControllerUsingURI extends HttpServlet {
 			try {
 				Class<?> handlerClass = Class.forName(handlerClassName);
 				Constructor<?> constructor = handlerClass.getConstructor();
-				K0960_CommandHandler handlerInstance = (K0960_CommandHandler) constructor.newInstance();
+				CommandHandler handlerInstance = (CommandHandler) constructor.newInstance();
 				//해당 핸들러 클래스를 인스턴스화
 				commandHandlerMap.put(command, handlerInstance);
 				//인스턴스화 된 실제 핸들러 클래스를 다시 key랑 묶어서 map에 넣음
@@ -72,9 +72,9 @@ public class K0970_ControllerUsingURI extends HttpServlet {
 			//6번부터 추출하기 위함
 		}
 		
-		K0960_CommandHandler handler = commandHandlerMap.get(command);
+		CommandHandler handler = commandHandlerMap.get(command);
 		if(handler == null) {
-			handler = new K0961_NullHandler();
+			handler = new NullHandler();
 		}
 		String viewPage = null;
 		try {
