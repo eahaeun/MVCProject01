@@ -128,6 +128,7 @@ ul.submenu li a:hover {
 	background-color: #555;
 	color: #fff;
 	border: none;
+	cursor: pointer; /* 마우스 커서 스타일 지정 */
 }
 </style>
 <script src="https://kit.fontawesome.com/bda9280492.js"
@@ -136,7 +137,7 @@ ul.submenu li a:hover {
 <body>
 	<div class="title">
 		<h1>
-			<a href="./K0800_mainpage.jsp" style="text-decoration: none; color: white;">人事・給与管理システム</a>
+			<a href="main.do" style="text-decoration: none; color: white;">人事・給与管理システム</a>
 		</h1>
 	</div>
 	<ul class="menu">

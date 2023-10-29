@@ -6,9 +6,43 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>会員登録ページ</title>
+<title>ログイン</title>
 <style>
-h1 {
+.container {
+	text-align: center;
+	border: 1px solid #000;
+	padding: 10px;
+	border-radius: 5px;
+	width: 20%;
+	margin: 0 auto;
+}
+
+.container div:not(:first-child) {
+	margin-right: 35px;
+}
+
+.button-container {
+	text-align: right;
+	margin-top: 10px; /* 버튼 컨테이너 위쪽 여백 추가 */
+}
+
+.button-container button {
+	margin-left: 10px;
+}
+
+.right-align {
+	float: right;
+}
+
+label {
+	display: inline-block;
+	/* label 태그는 inline 태그이므로 width, height, margin 상하가 적용되지 않으므로 inline-block 속성으로 변경해주는 것이 우선이다!*/
+	width: 70px;
+	text-align: right;
+	margin: 10px 0;
+}
+
+h1, .button-container {
 	margin: 10px 0;
 }
 
@@ -90,16 +124,12 @@ ul.submenu li a:hover {
 	background-color: #555;
 }
 
-/* 로그아웃 버튼 스타일 추가 */
-ul.menu li.logout {
-	position: absolute;
-	top: 0;
-	right: 10px;
-}
-
-ul.menu li.logout a {
+.search-button {
+	padding: 5px 10px;
 	background-color: #555;
 	color: #fff;
+	border: none;
+	cursor: pointer; /* 마우스 커서 스타일 지정 */
 }
 </style>
 <script src="https://kit.fontawesome.com/bda9280492.js"
@@ -112,10 +142,6 @@ ul.menu li.logout a {
 		</h1>
 	</div>
 	<ul class="menu">
-		<!-- 로그인 되어있을 때만 상단에 로그아웃 버튼 추가 -->
-		<c:if test="${!empty authUser}">
-			<li class="logout"><a href="logout.do">ログアウト</a></li>
-		</c:if>
 		<li><a href="#">基本設定</a>
 			<ul class="submenu">
 				<li><a href="#">情報修正</a></li>
@@ -143,9 +169,27 @@ ul.menu li.logout a {
 				<li><a href="#">退職給与入力</a></li>
 			</ul></li>
 	</ul>
-	<br />
-	<div align="center">
-		<p>ようこそ、${authUser.kanrisha_nm}様。ご利用いただきありがとうございます。</p>
-	</div>
+	<br>
+	<br>
+	<form>
+		<div class="container">
+			<div style="font-size: 50px">
+				<i class="fa-solid fa-user" style="color: #000000;"></i>
+			</div>
+			<h2>ログイン</h2>
+			<div>
+				<label for="id">ID:</label> <input type="text" name="kanrisha_uid">
+			</div>
+			<div>
+				<label for="pw">PW:</label> <input type="password" name="kanrisha_pw">
+			</div>
+			<div class="button-container">
+				<button type="submit" class="search-button" formaction="join.do"
+					formmethod="get">会員登録</button>
+				<button type="submit" class="search-button" formaction="login.do"
+					formmethod="post">ログイン</button>
+			</div>
+		</div>
+	</form>
 </body>
 </html>
