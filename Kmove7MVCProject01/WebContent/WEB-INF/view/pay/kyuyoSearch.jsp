@@ -12,7 +12,6 @@ h1 {
 	margin: 10px 0;
 }
 
-/* 스타일 설정 */
 body {
 	margin: 0;
 	padding: 0;
@@ -96,6 +95,24 @@ ul.menu li.logout a {
 	background-color: #555;
 	color: #fff;
 }
+
+/* 검색창 관련 */
+.search-box {
+	text-align: center;
+	margin-top: 20px;
+}
+
+.search-input {
+	padding: 5px;
+}
+
+.search-button {
+	padding: 5px 10px;
+	background-color: #555;
+	color: #fff;
+	border: none;
+	cursor: pointer; /* 마우스 커서 스타일 지정 */
+}
 </style>
 <script src="https://kit.fontawesome.com/bda9280492.js"
 	crossorigin="anonymous"></script>
@@ -113,41 +130,39 @@ ul.menu li.logout a {
 		</c:if>
 		<li><a href="#">基本設定</a>
 			<ul class="submenu">
-				<li><a href="kanrishaModify.do">情報修正</a></li>
-				<li><a href="bushoRegist.do">部署登録</a></li>
-				<li><a href="shainRegist.do">社員登録</a></li>
+				<li><a href="#">情報修正</a></li>
+				<li><a href="#">部署登録</a></li>
+				<li><a href="#">社員登録</a></li>
 			</ul></li>
 		<li><a href="#">人事管理</a>
 			<ul class="submenu">
-				<li><a href="shainList.do">社員一覧</a></li>
-				<li><a href="shainSearch.do">社員情報修正</a></li>
+				<li><a href="#">社員一覧</a></li>
+				<li><a href="#">社員情報修正</a></li>
 			</ul></li>
 		<li><a href="#">勤怠管理</a>
 			<ul class="submenu">
-				<li><a href="kintaiRegist.do">勤怠入力</a></li>
-				<li><a href="kintaiSearch.do">勤怠一覧</a></li>
+				<li><a href="#">勤怠入力</a></li>
+				<li><a href="#">勤怠一覧</a></li>
 			</ul></li>
 		<li><a href="#">給与管理</a>
 			<ul class="submenu">
-				<li><a href="kyuyoSearch.do">給与入力</a></li>
-				<li><a href="kyuyoList.do">給与台帳</a></li>
+				<li><a href="#">給与入力</a></li>
+				<li><a href="#">給与台帳</a></li>
 			</ul></li>
 		<li><a href="#">退職管理</a>
 			<ul class="submenu">
-				<li><a href="taishokuSearch.do">退職処理</a></li>
-				<li><a href="taishokukinSearch.do">退職給与入力</a></li>
+				<li><a href="#">退職処理</a></li>
+				<li><a href="#">退職給与入力</a></li>
 			</ul></li>
 	</ul>
 	<br />
-	<c:if test="${!empty authUser}">
-		<div align="center">
-			<p>ようこそ、${authUser.kanrisha_nm}様。ご利用いただきありがとうございます。</p>
+
+	<!-- 검색 창과 버튼 -->
+	<form action="kyuyoCalculate.do" method="get">
+		<div class="search-box">
+			<input type="text" class="search-input" placeholder="社員番号を入力" name="shain_no">
+			<input type="submit" value="検索" class="search-button">
 		</div>
-	</c:if>
-	<c:if test="${empty authUser}">
-		<div align="center">
-			<p>サイトに登録し、人事・給与管理システムをご利用ください！</p>
-		</div>
-	</c:if>
+	</form>
 </body>
 </html>
