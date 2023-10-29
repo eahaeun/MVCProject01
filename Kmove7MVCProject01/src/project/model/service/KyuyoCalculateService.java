@@ -20,7 +20,6 @@ public class KyuyoCalculateService {
 			conn = ConnectionProvider.getConnection();
 			//트랜잭션 시작
 			conn.setAutoCommit(false);
-			
 			Shain shain = shainDao.selectByNo(conn, shain_no);
 			conn.commit();
 			return shain;
