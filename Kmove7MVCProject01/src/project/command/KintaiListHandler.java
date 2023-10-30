@@ -17,7 +17,7 @@ public class KintaiListHandler implements CommandHandler{
 		public String process(HttpServletRequest req, HttpServletResponse res) throws Exception {
 
 			List<Shain> shainList = listService.getList();
-			req.setAttribute("ticketList", shainList);
+			req.setAttribute("shainList", shainList);
 			return "/WEB-INF/view/kintaiList..jsp";
 		}
 	
