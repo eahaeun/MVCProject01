@@ -52,7 +52,7 @@ public class ShainDao {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		try {
-			pstmt = conn.prepareStatement("select * from ticket_tbl_01 order by tno");
+			pstmt = conn.prepareStatement("select * from SHAIN_tbl_01 order by SHAIN_NO");
 			rs = pstmt.executeQuery();
 			List<Shain> result = new ArrayList<>();
 			while(rs.next()) {
