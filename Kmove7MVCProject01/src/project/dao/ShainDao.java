@@ -5,6 +5,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import jdbc.JdbcUtil;
 import project.model.bean.Shain;
@@ -45,5 +47,21 @@ public class ShainDao {
 				rs.getString("koza_num"),
 				rs.getString("zaishoku_st")
 				);
+	}
+	public List<Shain> select(Connection conn) throws SQLException {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		try {
+			pstmt = conn.prepareStatement("select * from ticket_tbl_01 order by tno");
+			rs = pstmt.executeQuery();
+			List<Shain> result = new ArrayList<>();
+			while(rs.next()) {
+				result.add(convertShain(rs));
+			}
+			return result;
+		} finally {
+			JdbcUtil.close(rs);
+			JdbcUtil.close(pstmt);
+		}
 	}
 }
