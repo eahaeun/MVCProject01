@@ -28,7 +28,7 @@
 			</c:when>
 			<c:when test="${kyuyoList != null }">
 				<c:forEach var="kyuyo" items="${kyuyoList}">
-					<tr>
+					<tr style="cursor: pointer;" onClick="location.href='kyuyoDetail.do?kizoku_ym=' + '${kyuyo.kizoku_ym}'">
 						<td>${kyuyo.kizoku_ym}</td>
 						<td>${kyuyo.pay_cnt}</td>
 						<td>${kyuyo.sousikyu}円</td>
