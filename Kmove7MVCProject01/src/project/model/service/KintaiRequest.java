@@ -49,6 +49,31 @@ public class KintaiRequest {
 			errors.put("SHAIN_NO", Boolean.TRUE);
 		}
 	}
+
+	public void setSHAIN_NO(String sHAIN_NO) {
+		SHAIN_NO = sHAIN_NO;
+	}
+
+	public void setKINTAI_KM(String kINTAI_KM) {
+		KINTAI_KM = kINTAI_KM;
+	}
+
+	public void setNYUROKU_YMD(Date nYUROKU_YMD) {
+		NYUROKU_YMD = nYUROKU_YMD;
+	}
+
+	public void setKAISHI_YMD(Date kAISHI_YMD) {
+		KAISHI_YMD = kAISHI_YMD;
+	}
+
+	public void setSHURYO_YMD(Date sHURYO_YMD) {
+		SHURYO_YMD = sHURYO_YMD;
+	}
+
+	public void setKINTAI_PAY(int kINTAI_PAY) {
+		KINTAI_PAY = kINTAI_PAY;
+	}
+	
 	
 
 }
