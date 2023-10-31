@@ -7,9 +7,26 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import jdbc.JdbcUtil;
+import project.model.bean.Kintai;
 
 public class KintaiDao {
 
+	public int insert(Connection conn, Kintai kintai) throws SQLException {
+		PreparedStatement pstmt = null;
+		try {
+			pstmt = conn.prepareStatement("insert into kintai_tbl_01 values (?,?," + "(to_date(?, 'RRMMDD')),(to_date(?,'RRMMDD')),(to_date(?,'RRMMDD')),"+"?");
+			pstmt.setString(1, kintai.getSHAIN_NO());
+			pstmt.setString(2, kintai.getKINTAI_KM());
+			pstmt.setDate(3, kintai.getNYUROKU_YMD());
+			pstmt.setDate(4, kintai.getKAISHI_YMD());
+			pstmt.setDate(5, kintai.getSHURYO_YMD());
+			pstmt.setInt(6, kintai.getKINTAI_PAY());
+			return pstmt.executeUpdate();
+		} finally {
+			JdbcUtil.close(pstmt);
+		}
+	}
+	
 	public String selectByKinNo(Connection conn, String SHAIN_NO) throws SQLException {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;

@@ -18,7 +18,7 @@ public class KintaiListHandler implements CommandHandler{
 
 			List<Shain> shainList = listService.getList();
 			req.setAttribute("shainList", shainList);
-			return "/WEB-INF/view/kintaiList..jsp";
+			return "/WEB-INF/view/kintaiList.jsp";
 		}
 	
 	
