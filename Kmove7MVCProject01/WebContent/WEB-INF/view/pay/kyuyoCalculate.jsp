@@ -27,6 +27,7 @@
             <th>部署</th>
             <th>役職</th>
             <th>在職状態</th>
+            <th>給与記録</th>
         </tr>
         <tr>
             <td>${shain.shain_no}</td>
@@ -34,6 +35,7 @@
             <td>${shain.busho_nm}</td>
             <td>${shain.yakushoku_nm}</td>
             <td>${shain.zaishoku_st}</td>
+            <td><button>管理</button></td>
         </tr>
     </table>
 
