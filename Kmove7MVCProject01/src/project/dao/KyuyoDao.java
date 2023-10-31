@@ -4,11 +4,15 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import jdbc.JdbcUtil;
 import project.model.bean.Kyuyo;
+import project.model.bean.KyuyoDetail;
 import project.model.bean.KyuyoList;
 
 public class KyuyoDao {
@@ -53,4 +57,37 @@ public class KyuyoDao {
 		        rs.getInt("total_kojyo_pay")						
 		    );
 	}
+	
+	// 급여 상세 조회
+		public List<KyuyoDetail> selectByYM(Connection conn, String kizoku_ym) throws SQLException {
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+			try {
+				pstmt = conn.prepareStatement(
+						"select shain_nm, nyusha_ymd, busho_nm, yakushoku_nm, kihon_pay, sikyu_pay, kojyo_pay "
+								+ "from kyuyo inner join shain on kyuyo.shain_no = shain.shain_no "
+								+ "where kyuyo.kizoku_ym = ? order by shain_nm");
+				pstmt.setString(1, kizoku_ym);
+				rs = pstmt.executeQuery();
+				List<KyuyoDetail> result = new ArrayList<>();
+				while (rs.next()) {
+					result.add(convertKyuyoDetail(rs));
+				}
+				return result;
+			} finally {
+				JdbcUtil.close(rs);
+				JdbcUtil.close(pstmt);
+			}
+		}
+
+		private KyuyoDetail convertKyuyoDetail(ResultSet rs) throws SQLException {
+			return new KyuyoDetail(rs.getString("shain_nm"), toSDF(rs.getTimestamp("nyusha_ymd")),
+					rs.getString("busho_nm"), rs.getString("yakushoku_nm"), rs.getInt("kihon_pay"), rs.getInt("sikyu_pay"),
+					rs.getInt("kojyo_pay"));
+		}
+
+		private String toSDF(Timestamp timestamp) {
+			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+			return sdf.format(new Date(timestamp.getTime()));
+		}
 }
