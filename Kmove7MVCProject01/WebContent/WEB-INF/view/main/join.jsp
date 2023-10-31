@@ -56,6 +56,7 @@
 				</script>
 			</c:if>
 		</form>
+		
 	</div>
 </body>
 </html>
