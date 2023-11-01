@@ -37,12 +37,12 @@
 
 		<c:if test="${errors.idOrPwNotMatch}">
 			<script>
-				alert('아이디 혹은 암호가 일치하지 않습니다.');
+				alert('IDまたはパスワードが一致しません。');
 			</script>
 		</c:if>
 		<c:if test="${errors.id or errors.password}">
 			<script>
-				alert('입력되지 않은 칸이 있습니다.');
+				alert('IDとパスワードを入力してください。');
 			</script>
 		</c:if>
 	</form>
