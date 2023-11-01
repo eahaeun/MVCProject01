@@ -73,7 +73,7 @@ public class KintaiRequest {
 	public void setKINTAI_PAY(int kINTAI_PAY) {
 		KINTAI_PAY = kINTAI_PAY;
 	}
-	
+
 	
 
 }
