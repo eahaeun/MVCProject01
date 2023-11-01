@@ -66,6 +66,7 @@ public class KintaiRequest {
 		KAISHI_YMD = kAISHI_YMD;
 	}
 
+
 	public void setSHURYO_YMD(Date sHURYO_YMD) {
 		SHURYO_YMD = sHURYO_YMD;
 	}
