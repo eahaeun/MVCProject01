@@ -3,19 +3,17 @@ package project.command;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import mvc.command.CommandHandler;
 import project.exception.DuplicatedException;
-import project.service.ShainRegistService;
-import project.service.ShainRequest;
+import project.model.request.ShainRequest;
+import project.model.service.ShainRegistService;
 
 public class ShainRegistHandler implements CommandHandler {
-	private static final String FORM_VIEW = "/WEB-INF/view/shainRegist.jsp";
+	private static final String FORM_VIEW = "/WEB-INF/view/emp/shainRegist.jsp";
 	private ShainRegistService shainRegistService = new ShainRegistService();
 
 	@Override
@@ -55,11 +53,12 @@ public class ShainRegistHandler implements CommandHandler {
 		shainReq.setGinko_nm(req.getParameter("ginko_nm"));
 		shainReq.setKoza_num(req.getParameter("koza_num"));
 		shainReq.setZaishoku_st("在職");
+		
 		try {
 			shainRegistService.shain(shainReq);
-			return "/WEB-INF/view/shainRegistSuccess.jsp";
+			return "/WEB-INF/view/emp/shainRegistSuccess.jsp";
 		} catch (DuplicatedException e) {
-			return FORM_VIEW;
+			return FORM_VIEW; 
 		}
 
 	}

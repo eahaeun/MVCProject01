@@ -20,7 +20,7 @@ public class KyuyoRegistHandler implements CommandHandler {
 		int kojyo_pay = Integer.parseInt(req.getParameter("kojyo_pay"));
 		
 		try {
-			kyuyoService.insertPay(shain_no,kizoku_ym,sikyu_pay,kojyo_pay);
+			kyuyoService.insertPay(shain_no,kizoku_ym,sikyu_pay,kojyo_pay); 
 			return "/WEB-INF/view/pay/kyuyoRegistSuccess.jsp";
 		} catch(Exception e) {
 			e.printStackTrace();

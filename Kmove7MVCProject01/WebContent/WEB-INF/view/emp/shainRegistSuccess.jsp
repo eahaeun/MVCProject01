@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>社員登録成功</title>
 </head>
 <body>
     <%
@@ -13,7 +13,7 @@
 
     <script>
        alert('<%= message %>');
-       window.location.href = "shainList.do";
+       window.location.href = "shainRegist.do";
     </script>
     
     

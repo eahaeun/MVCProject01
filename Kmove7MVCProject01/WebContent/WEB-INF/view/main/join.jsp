@@ -42,17 +42,17 @@
 			<c:if
 				test="${errors.kanrisha_uid or errors.kanrisha_pw or errors.kanrisha_nm or errors.confirm_id}">
 				<script>
-					alert('未入力の項目があります。');
+					alert('입력되지 않은 칸이 있습니다.');
 				</script>
 			</c:if>
 			<c:if test="${errors.notMatch }">
 				<script>
-					alert('パスワード確認が一致しません。');
+					alert('암호와 확인이 일치하지 않습니다.');
 				</script>
 			</c:if>
 			<c:if test="${errors.duplicatedId }">
 				<script>
-					alert('既に使用中のIDです。');
+					alert('이미 사용중인 아이디입니다.');
 				</script>
 			</c:if>
 		</form>

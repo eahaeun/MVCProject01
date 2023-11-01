@@ -2,13 +2,13 @@ package project.model.service;
 
 import java.sql.Connection;
 import java.sql.SQLException;
-import java.util.Date;
 
 import jdbc.JdbcUtil;
 import jdbc.connection.ConnectionProvider;
 import project.dao.ShainDao;
 import project.exception.DuplicatedException;
-import project.model.Shain;
+import project.model.bean.Shain;
+import project.model.request.ShainRequest;
 
 public class ShainRegistService {
 	private ShainDao shainDao = new ShainDao();
@@ -19,11 +19,11 @@ public class ShainRegistService {
 			conn = ConnectionProvider.getConnection();
 			conn.setAutoCommit(false);
 			
-			Shain shain = shainDao.selectByNo(conn, shainReq.getShain_no());
-			if(shain != null) {
-				JdbcUtil.rollback(conn);
-				throw new DuplicatedException();
-			}
+//			Shain shain = shainDao.selectByNo(conn, shainReq.getShain_no());
+//			if(shain != null) {
+//				JdbcUtil.rollback(conn);
+//				throw new DuplicatedException();
+//			}
 			
 			shainDao.insert(conn, new Shain(
 				    shainReq.getShain_no(),
@@ -40,6 +40,7 @@ public class ShainRegistService {
 				    shainReq.getKoza_num(),
 				    shainReq.getZaishoku_st()
 				));
+			
 			conn.commit();
 		}catch(SQLException e) {
 			JdbcUtil.rollback(conn);

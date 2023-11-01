@@ -19,6 +19,7 @@ public class KintaiRequest {
 		this.SHURYO_YMD = SHURYO_YMD;
 		this.KINTAI_PAY = KINTAI_PAY;
 	}
+	public KintaiRequest() {}
 
 	public String getSHAIN_NO() {
 		return SHAIN_NO;
