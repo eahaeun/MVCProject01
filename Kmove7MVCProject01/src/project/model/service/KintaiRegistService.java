@@ -30,4 +30,21 @@ public class KintaiRegistService {
 			JdbcUtil.close(conn);
 		}
 	}
+	public int count() {
+		Connection conn = null;
+		try {
+			conn = ConnectionProvider.getConnection();
+			conn.setAutoCommit(false);
+			int result = kintaiDao.selectCount(conn);
+			conn.commit();
+			return result;
+		} catch(Exception e) {
+			JdbcUtil.rollback(conn);
+			e.printStackTrace();
+			return -1;
+		} finally {
+			JdbcUtil.close(conn);
+		}
+	}
+
 }

@@ -5,6 +5,7 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 
 import jdbc.JdbcUtil;
 import project.model.bean.Kintai;
@@ -26,7 +27,21 @@ public class KintaiDao {
 			JdbcUtil.close(pstmt);
 		}
 	}
-	
+	public int selectCount(Connection conn) throws SQLException {
+		Statement stmt = null;
+		ResultSet rs = null;
+		try {
+			stmt = conn.createStatement();
+			rs = stmt.executeQuery("select count(*) from shain_tbl_01");
+			if (rs.next()) {
+				return rs.getInt(1);
+			}
+			return 0;
+		} finally {
+			JdbcUtil.close(rs);
+			JdbcUtil.close(stmt);
+		}
+	}
 	public String selectByKinNo(Connection conn, String SHAIN_NO) throws SQLException {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
