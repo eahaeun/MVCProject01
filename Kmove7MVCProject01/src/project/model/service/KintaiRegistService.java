@@ -6,6 +6,7 @@ import jdbc.JdbcUtil;
 import jdbc.connection.ConnectionProvider;
 import project.dao.KintaiDao;
 import project.model.bean.Kintai;
+import project.model.request.KintaiRequest;
 
 public class KintaiRegistService {
 	private KintaiDao kintaiDao = new KintaiDao();

@@ -1,4 +1,4 @@
-package project.model.service;
+package project.model.request;
 
 import java.sql.Date;
 import java.util.Map;

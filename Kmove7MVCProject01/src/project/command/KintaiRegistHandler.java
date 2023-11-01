@@ -7,8 +7,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import mvc.command.CommandHandler;
+import project.model.request.KintaiRequest;
 import project.model.service.KintaiRegistService;
-import project.model.service.KintaiRequest;
 
 public class KintaiRegistHandler implements CommandHandler{
 

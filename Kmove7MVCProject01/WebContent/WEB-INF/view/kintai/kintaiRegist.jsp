@@ -14,13 +14,14 @@
 <style>
 body {
 	font-family: Arial, sans-serif;
-	background-color: #f0f0f0;
+	background-color: #fff;
+	color: #000;
 }
 
 h3 {
 	text-align: center;
-	background-color: #0074e4;
-	color: #ffffff;
+	background-color: #000;
+	color: #fff;
 	padding: 10px;
 }
 
@@ -28,7 +29,7 @@ h3 {
 	margin: 0 auto;
 	max-width: 800px;
 	padding: 20px;
-	background-color: #ffffff;
+	background-color: #000;
 }
 
 table {
@@ -52,7 +53,7 @@ select, input[type="text"] {
 
 button {
 	background-color: #0074e4;
-	color: #fff;
+	color: #000;
 	padding: 10px 20px;
 	border: none;
 	cursor: pointer;
@@ -62,62 +63,88 @@ button:hover {
 	background-color: #0056b3;
 }
 
-footer {
-	text-align: center;
-	background-color: #0074e4;
-	color: #fff;
-	padding: 10px;
+table {
+	width: 100%;
+	border-collapse: collapse;
+	margin: 0 auto;
 }
+function autoFillShainNo() {
+        var shainNoCheckbox = document.getElementById("shainNoCheckbox");
+        var shainNoInput = document.getElementsByName("shain_no")[0];
+
+        if (shainNoCheckbox.checked) {
+            
+            shainNoInput.value = "";
+        } else {
+            
+            shainNoInput.value = "";
+        }
+    }
 </style>
 </head>
 <body>
-	<%@ include file="/WEB-INF/view/header.jsp" %>
+	<jsp:include page="/WEB-INF/view/header.jsp" />
 	<h3>勤怠登録</h3>
 	<br />
+	<div style="display: flex;">
+	<div style="flex: 1; margin-right: 10px;">
+        <table border="1">
+          <tr>
+                <th>社員番号</th>
+                <th>社員名</th>
+                <th>住所</th>
+                <th>部署名</th>
+                <th>役職名</th>
+                <th>連絡先電話番号</th>
+                <th>連絡先メールアドレス</th>
+                
+                <td><input type="checkbox" name="shain_no_checkbox" onclick="autoFillShainNo()"></td>
+            </tr>  
+        </table>
+    </div>
+    <div style="flex: 1;">
+		<form>
+			<table border="1">
+				<tr>
+					<td>社員番号</td>
+					<td><input type="text" name="shain_no"></td>
+				</tr>
+				<tr>
+					<td>入力日</td>
+					<td><input type="text" name="KINTAI_KM"></td>
+				</tr>
+				<tr>
+					<td>勤怠項目</td>
+					<td><select name="NYUROKU_YMD">
+							<option value="出張">出張</option>
+							<option value="休暇">休暇</option>
+							<option value="休日勤務">休日勤務</option>
+					</select>
+				</tr>
+				<tr>
+					<td>開始日</td>
+					<td><input type="text" id="KAISHI_YMD" name="KAISHI_YMD"></td>
+				</tr>
+				<tr>
+					<td>終了日</td>
+					<td><input type="text" id="SHURYO_YMD" name="SHURYO_YMD"></td>
+				</tr>
 
-	<form>
-		<table border="1">
-			<tr>
-				<td>社員番号</td>
-				<td><input type="text" name="shain_no"></td>
-			</tr>
-			<tr>
-				<td>入力日</td>
-				<td><input type="text" name="KINTAI_KM"></td>
-			</tr>
-			<tr>
-				<td>勤怠項目</td>
-				<td><select name="NYUROKU_YMD">
-						<option value="出張">出張</option>
-						<option value="休暇">休暇</option>
-						<option value="休日勤務">休日勤務</option>
-				</select>
-			</tr>
-			<tr>
-				<td>開始日</td>
-				<td><input type="text" id="KAISHI_YMD" name="KAISHI_YMD"></td>
-			</tr>
-			<tr>
-				<td>終了日</td>
-				<td><input type="text" id="SHURYO_YMD" name="SHURYO_YMD"></td>
-			</tr>
-
-			<tr>
-				<td>手当</td>
-				<td><input type="text" name="KINTAI_PAY"></td>
-			</tr>
-		</table>
-		<br />
-		<button type="submit" formaction="regist.do" formmethod="post">登録</button>
-	</form>
+				<tr>
+					<td>手当</td>
+					<td><input type="text" name="KINTAI_PAY"></td>
+				</tr>
+			</table>
+			<br />
+			<button type="submit" formaction="regist.do" formmethod="post"
+				style="background-color: #000; color: #fff;">登録</button>
+		</form>
+		</div>
+	</div>
 	<br />
 	</div>
 </body>
-<footer>
-	<div align="center">
-		<br /> <br /> Copyright
-	</div>
-</footer>
+
 <script>
 	$(function() {
 		$("#KAISHI_YMD").datepicker({
