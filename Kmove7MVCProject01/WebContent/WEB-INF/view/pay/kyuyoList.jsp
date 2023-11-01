@@ -23,7 +23,7 @@
 		<c:choose>
 			<c:when test="${kyuyoList==null}">
 				<tr>
-					<td colspan=5><b>입력된 급여내역이 없습니다.</b></td>
+					<td colspan=5><b>登録された給与記録がありません。</b></td>
 				</tr>
 			</c:when>
 			<c:when test="${kyuyoList != null }">
