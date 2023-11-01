@@ -50,7 +50,7 @@ public class KintaiDao {
 			pstmt.setString(1, SHAIN_NO);
 			rs = pstmt.executeQuery();
 			if (rs.next()) {
-				return rs.getString("tstat");
+				return rs.getString("shain_no");
 			}
 			return null;
 		} finally {
