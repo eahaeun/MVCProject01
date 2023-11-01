@@ -2,13 +2,12 @@ package project.model.service;
 
 import java.sql.Connection;
 import java.sql.SQLException;
-import java.util.Date;
 
 import jdbc.JdbcUtil;
 import jdbc.connection.ConnectionProvider;
 import project.dao.ShainDao;
 import project.exception.DuplicatedException;
-import project.model.Shain;
+import project.model.bean.Shain;
 
 public class ShainRegistService {
 	private ShainDao shainDao = new ShainDao();
