@@ -71,7 +71,7 @@ footer {
 </style>
 </head>
 <body>
-	<jsp:include page="/WEB-INF/header.jsp" />
+	<%@ include file="/WEB-INF/view/header.jsp" %>
 	<h3>勤怠登録</h3>
 	<br />
 
