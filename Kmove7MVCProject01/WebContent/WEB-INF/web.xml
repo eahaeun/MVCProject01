@@ -9,14 +9,6 @@
 	<listener>
 		<listener-class>jdbc.DBCPInitListener</listener-class>
 	</listener>
-	<!--공통 헤더 -->
-	<jsp-config>
-		<jsp-property-group>
-			<url-pattern>*.jsp</url-pattern>
-			<include-prelude>/WEB-INF/header.jsp</include-prelude>
-		</jsp-property-group>
-	</jsp-config>
-
 
 	<context-param>
 		<param-name>poolConfig</param-name>
