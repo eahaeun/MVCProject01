@@ -10,7 +10,7 @@
 <link rel="stylesheet" type="text/css" href="./css/mainpage.css">
 </head>
 <body>
-	<%@ include file="/WEB-INF/view/header.jsp" %>
+	
 	<c:if test="${!empty authUser}">
 		<div align="center">
 			<p>ようこそ、${authUser.kanrisha_nm}様。ご利用いただきありがとうございます。</p>
