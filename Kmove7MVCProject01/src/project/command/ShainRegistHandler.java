@@ -57,7 +57,7 @@ public class ShainRegistHandler implements CommandHandler {
 			shainRegistService.shain(shainReq);
 			return "/WEB-INF/view/emp/shainRegistSuccess.jsp";
 		} catch (DuplicatedException e) {
-			return FORM_VIEW;
+			return FORM_VIEW; 
 		}
 
 	}
