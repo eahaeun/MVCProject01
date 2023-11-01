@@ -12,7 +12,7 @@ import project.model.service.KintaiRegistService;
 
 public class KintaiRegistHandler implements CommandHandler{
 
-	private static final String FORM_VIEW = "/WEB-INF/view/kintaiRegist.jsp";
+	private static final String FORM_VIEW = "/WEB-INF/view/kintai/kintaiRegist.jsp";
 	private KintaiRegistService regiService = new KintaiRegistService();
 	@Override
 	public String process(HttpServletRequest req, HttpServletResponse res) throws Exception {
