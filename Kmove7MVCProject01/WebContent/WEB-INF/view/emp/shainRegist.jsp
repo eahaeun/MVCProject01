@@ -9,7 +9,7 @@
 <link rel="stylesheet" type="text/css" href="./css/shain.css">
 </head>
 <body>
-	<%@ include file="/WEB-INF/view/header.jsp"%>
+	<%@ include file="/WEB-INF/view/header.jsp" %>
 
 	<div class="title">
 		<h1>社員登録</h1>
