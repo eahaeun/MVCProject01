@@ -62,7 +62,7 @@ public class ShainDao {
 			pstmt.setString(1, shain.getShain_no());
 			pstmt.setString(2, shain.getShain_nm());
 			pstmt.setString(3, shain.getAddress());
-			pstmt.setString(4, shain.getBusho_nm());
+			pstmt.setString(4, shain.getBusho_nm().trim());
 			pstmt.setString(5, shain.getYakushoku_nm());
 			pstmt.setInt(6, shain.getKihon_pay());
 			pstmt.setString(7, shain.getRenraku_tel());

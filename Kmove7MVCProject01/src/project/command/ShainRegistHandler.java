@@ -9,8 +9,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import mvc.command.CommandHandler;
 import project.exception.DuplicatedException;
+import project.model.request.ShainRequest;
 import project.model.service.ShainRegistService;
-import project.model.service.ShainRequest;
 
 public class ShainRegistHandler implements CommandHandler {
 	private static final String FORM_VIEW = "/WEB-INF/view/emp/shainRegist.jsp";
@@ -53,6 +53,7 @@ public class ShainRegistHandler implements CommandHandler {
 		shainReq.setGinko_nm(req.getParameter("ginko_nm"));
 		shainReq.setKoza_num(req.getParameter("koza_num"));
 		shainReq.setZaishoku_st("在職");
+		
 		try {
 			shainRegistService.shain(shainReq);
 			return "/WEB-INF/view/emp/shainRegistSuccess.jsp";
