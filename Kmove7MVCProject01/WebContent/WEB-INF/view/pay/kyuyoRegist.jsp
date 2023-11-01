@@ -35,7 +35,7 @@
             <td>${shain.busho_nm}</td>
             <td>${shain.yakushoku_nm}</td>
             <td>${shain.zaishoku_st}</td>
-            <td><button>管理</button></td>
+            <td><button onclick="openPopup()">管理</button></td>
         </tr>
     </table>
 
@@ -95,5 +95,19 @@
 	    </div>
 	    <br/><br/>
     </form>
+    
+    <script>
+		function openPopup() {
+			var width = 800;
+			var height = 500;
+			var left = (window.innerWidth - width) / 2;
+			var top = (window.innerHeight - height) / 2;
+			var options = 'width=' + width + ',height=' + height + ',left='
+					+ left + ',top=' + top;
+			var shainNo = "${shain.shain_no}".trim();
+			// 새로운 창을 열기
+			window.open('kyuyoManage.do?shain_no=' + shainNo, '給与管理', options);
+		}
+	</script>
 </body>
 </html>

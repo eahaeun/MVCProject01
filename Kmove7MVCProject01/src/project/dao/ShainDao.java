@@ -48,6 +48,7 @@ public class ShainDao {
 				rs.getString("zaishoku_st")
 				);
 	}
+	
 	public List<Shain> select(Connection conn) throws SQLException {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
