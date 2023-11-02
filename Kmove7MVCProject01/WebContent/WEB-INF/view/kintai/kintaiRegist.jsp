@@ -85,7 +85,7 @@ table {
 					<th>部署名</th>
 					<th>役職名</th>
 				</tr>
-				<%-- <c:forEach var="kintai" items=""> --%>
+				<c:forEach var="shain" items="${shain}">
 				<tr>
 				<td><input type="checkbox" name="shain_no_checkbox"
 						onclick="autoFillShainNo()"></td>
@@ -94,7 +94,7 @@ table {
 					<td>${shain.busho_nm}</td>
 					<td>${shain.yakushoku_nm}</td>
 				</tr>
-				<%-- </c:forEach> --%>
+				</c:forEach>
 			</table>
 		</div>
 		<div style="flex: 1;">
