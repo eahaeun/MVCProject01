@@ -21,35 +21,10 @@ public class ShainDao {
 			pstmt.setString(1, shain_no);
 			rs = pstmt.executeQuery();
 			Shain shain = null;
-			if (rs.next()) {
+			while (rs.next()) {
 				shain = convertShain(rs);
 			}
 			return shain;
-		} finally {
-			JdbcUtil.close(rs);
-			JdbcUtil.close(pstmt);
-		}
-	}
-
-	private Shain convertShain(ResultSet rs) throws SQLException {
-		return new Shain(rs.getString("shain_no"), rs.getString("shain_nm"), rs.getString("address"),
-				rs.getString("busho_nm"), rs.getString("yakushoku_nm"), rs.getInt("kihon_pay"),
-				rs.getString("renraku_tel"), rs.getString("renraku_email"), rs.getDate("nyusha_ymd"),
-				rs.getDate("taishoku_ymd"), rs.getString("ginko_nm"), rs.getString("koza_num"),
-				rs.getString("zaishoku_st"));
-	}
-
-	public List<Shain> select(Connection conn) throws SQLException {
-		PreparedStatement pstmt = null;
-		ResultSet rs = null;
-		try {
-			pstmt = conn.prepareStatement("select * from SHAIN_tbl_01 order by SHAIN_NO");
-			rs = pstmt.executeQuery();
-			List<Shain> result = new ArrayList<>();
-			while (rs.next()) {
-				result.add(convertShain(rs));
-			}
-			return result;
 		} finally {
 			JdbcUtil.close(rs);
 			JdbcUtil.close(pstmt);
@@ -74,4 +49,97 @@ public class ShainDao {
 			pstmt.executeUpdate();
 		}
 	}
+
+	private Shain convertShain(ResultSet rs) throws SQLException {
+		return new Shain(rs.getString("shain_no"), rs.getString("shain_nm"), rs.getString("address"),
+				rs.getString("busho_nm"), rs.getString("yakushoku_nm"), rs.getInt("kihon_pay"),
+				rs.getString("renraku_tel"), rs.getString("renraku_email"), rs.getDate("nyusha_ymd"),
+				rs.getDate("taishoku_ymd"), rs.getString("ginko_nm"), rs.getString("koza_num"),
+				rs.getString("zaishoku_st"));
+	}
+
+	// 전체 사원 목록 조회
+	public List<Shain> select(Connection conn) throws SQLException {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		try {
+			pstmt = conn.prepareStatement("select * from shain");
+			rs = pstmt.executeQuery();
+			List<Shain> result = new ArrayList<>();
+			while (rs.next()) {
+				result.add(convertShainList(rs));
+			}
+			return result;
+		} finally {
+			JdbcUtil.close(rs);
+			JdbcUtil.close(pstmt);
+		}
+	}
+
+	// 재직상태가 재직인 사원목록 조회
+	public List<Shain> retselect(Connection conn) throws SQLException {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		try {
+			pstmt = conn.prepareStatement("SELECT * FROM shain WHERE zaishoku_st = '在職'");
+			rs = pstmt.executeQuery();
+			List<Shain> result = new ArrayList<>();
+			while (rs.next()) {
+				result.add(convertShainList(rs));
+			}
+			return result;
+		} finally {
+			JdbcUtil.close(rs);
+			JdbcUtil.close(pstmt);
+		}
+	}
+
+	// 재직상태가 퇴직인 사원목록 조회
+	public List<Shain> curselect(Connection conn) throws SQLException {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		try {
+			pstmt = conn.prepareStatement("SELECT * FROM shain WHERE zaishoku_st = '退社'");
+			rs = pstmt.executeQuery();
+			List<Shain> result = new ArrayList<>();
+			while (rs.next()) {
+				result.add(convertShainList(rs));
+			}
+			return result;
+		} finally {
+			JdbcUtil.close(rs);
+			JdbcUtil.close(pstmt);
+		}
+	}
+	
+	public Shain seaselect(Connection conn, String shain_no) throws SQLException {
+	    PreparedStatement pstmt = null;
+	    ResultSet rs = null;
+	    Shain result = null;
+
+	    try {
+	        pstmt = conn.prepareStatement("SELECT * FROM shain WHERE shain_no = ?");
+	        pstmt.setString(1, shain_no);
+	        rs = pstmt.executeQuery();
+
+	        if (rs.next()) {
+	            result = convertShainList(rs);
+	        }
+	    } finally {
+	        JdbcUtil.close(rs);
+	        JdbcUtil.close(pstmt);
+	    }
+
+	    return result;
+	}
+	
+
+	private Shain convertShainList(ResultSet rs) throws SQLException {
+		return new Shain(rs.getString("shain_no"), rs.getString("shain_nm"), rs.getString("address"),
+				rs.getString("busho_nm"), rs.getString("yakushoku_nm"), rs.getInt("kihon_pay"),
+				rs.getString("renraku_tel"), rs.getString("renraku_email"), rs.getDate("nyusha_ymd"),
+				rs.getDate("taishoku_ymd"), rs.getString("ginko_nm"), rs.getString("koza_num"),
+				rs.getString("zaishoku_st"));
+	}
+
 }
