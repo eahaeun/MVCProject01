@@ -2,8 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<link rel="stylesheet"
-	href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <link rel="stylesheet" type="text/css" href="./css/mainpage.css">
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
@@ -73,25 +72,29 @@ table {
 </head>
 <body>
 	<%@ include file="/WEB-INF/view/header.jsp"%>
+	<form action="kintaiRegist.do" method="get">
+	</form>
 	<br />
 	<div style="display: flex;">
 		<div style="flex: 1; margin-right: 10px;">
 			<table border="1">
 				<tr>
+					<th></th>
+					<th>社員番号</th>
+					<th>社員名</th>
+					<th>部署名</th>
+					<th>役職名</th>
+				</tr>
+				<%-- <c:forEach var="kintai" items=""> --%>
+				<tr>
 				<td><input type="checkbox" name="shain_no_checkbox"
 						onclick="autoFillShainNo()"></td>
-					<th>社員番号</th>
-                <th>社員名</th>
-                <th>部署名</th>
-                <th>役職名</th>
-            </tr> 
-            <tr>
-            <td>${shain.shain_no}</td>
-            <td>${shain.shain_nm}</td>
-            <td>${shain.busho_nm}</td>
-            <td>${shain.yakushoku_nm}</td>
-        </tr> 
+					<td>${001}</td>
+					<td>${shain.shain_nm}</td>
+					<td>${shain.busho_nm}</td>
+					<td>${shain.yakushoku_nm}</td>
 				</tr>
+				<%-- </c:forEach> --%>
 			</table>
 		</div>
 		<div style="flex: 1;">
@@ -99,7 +102,7 @@ table {
 				<table border="1">
 					<tr>
 						<td>入力日</td>
-						<td><input type="text" id = "KINTAI_KM"name="KINTAI_KM"></td>
+						<td><input type="text" id="KINTAI_KM" name="KINTAI_KM"></td>
 					</tr>
 					<tr>
 						<td>勤怠項目</td>
@@ -151,16 +154,18 @@ table {
 			changeYear : true,
 		});
 	});
-	function autoFillShainNo() {var shainNoCheckbox =
-		document.getElementById("shainNoCheckbox");var shainNoInput =
-		document.getElementsByName("shain_no")[0];if (shainNoCheckbox.checked)
-		{ shainNoInput.value = "";
-		
-	}
+	function autoFillShainNo() {
+		var shainNoCheckbox = document.getElementById("shainNoCheckbox");
+		var shainNoInput = document.getElementsByName("shain_no")[0];
+		if (shainNoCheckbox.checked) {
+			shainNoInput.value = "";
 
-	else {shainNoInput .value = "";
-		
-	}
+		}
+
+		else {
+			shainNoInput.value = "";
+
+		}
 	}
 </script>
 

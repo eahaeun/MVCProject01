@@ -7,13 +7,17 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import mvc.command.CommandHandler;
+import project.model.bean.Shain;
+import project.model.bean.Zeikin;
 import project.model.request.KintaiRequest;
 import project.model.service.KintaiRegistService;
+import project.model.service.KyuyoCalculateService;
 
 public class KintaiRegistHandler implements CommandHandler{
 
 	private static final String FORM_VIEW = "/WEB-INF/view/kintai/kintaiRegist.jsp";
 	private KintaiRegistService regiService = new KintaiRegistService();
+	KyuyoCalculateService kyuyoService = new KyuyoCalculateService();
 	@Override
 	public String process(HttpServletRequest req, HttpServletResponse res) throws Exception {
 		if(req.getMethod().equalsIgnoreCase("GET")) {
@@ -27,7 +31,10 @@ public class KintaiRegistHandler implements CommandHandler{
 	}
 	
 	private String processForm(HttpServletRequest req, HttpServletResponse res) {
-		req.setAttribute("count",regiService.count());
+		String shain_no = req.getParameter("shain_no");
+		Shain shain = kyuyoService.searchShain(shain_no);
+		
+		req.setAttribute("shain", shain);
 		return FORM_VIEW;
 	}
 	
