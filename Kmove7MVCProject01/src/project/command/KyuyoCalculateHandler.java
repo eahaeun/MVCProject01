@@ -31,47 +31,63 @@ public class KyuyoCalculateHandler implements CommandHandler {
 	private String processForm(HttpServletRequest req, HttpServletResponse res) throws SQLException {
 		String shain_no = req.getParameter("shain_no");
 		Shain shain = kyuyoService.searchShain(shain_no);
+		if (shain == null) {
+			return FORM_VIEW;
+		}
+
 		Zeikin zeikin = kyuyoService.calculateZeikin(shain.getKihon_pay());
-		
+
 		req.setAttribute("shain", shain);
 		req.setAttribute("zeikin", zeikin);
-		
+
 		return FORM_VIEW;
 	}
 
 	private String processSubmit(HttpServletRequest req, HttpServletResponse res) throws SQLException {
-		//급여관련 항목 출력을 위해 req영역에 저장
+		// 급여관련 항목 출력을 위해 req영역에 저장
 		KyuyoRequest kyuyoReq = createKyuyoRequest(req);
 		int sikyu_pay = kyuyoService.calculateSikyu(kyuyoReq);
 		int kojyo_pay = kyuyoService.calculateKojyo(kyuyoReq);
 		int sosikyu_pay = sikyu_pay - kojyo_pay;
-		
-		//사원 테이블 출력을 위해 req영역에 저장
+
+		// 사원 테이블 출력을 위해 req영역에 저장
 		String shain_no = kyuyoReq.getShain_no();
 		Shain shain = kyuyoService.searchShain(shain_no);
 		req.setAttribute("shain", shain);
-		
+
 		req.setAttribute("kyuyoReq", kyuyoReq);
 		req.setAttribute("sikyu_pay", sikyu_pay);
 		req.setAttribute("kojyo_pay", kojyo_pay);
 		req.setAttribute("sosikyu_pay", sosikyu_pay);
-		
+
 		return "/WEB-INF/view/pay/kyuyoRegist.jsp";
 	}
-	
-	//지급,공제항목들 정수로 변환 후 req객체에 담음
+
+	// 지급,공제항목들 정수로 변환 후 req객체에 담음
 	private KyuyoRequest createKyuyoRequest(HttpServletRequest req) {
 		String shain_no = req.getParameter("shain_number");
 		String kizoku_ym = req.getParameter("kizoku_ym");
-		int kihon_pay = Integer.parseInt(req.getParameter("kihon_pay"));
-		int kintai_pay = Integer.parseInt(req.getParameter("kintai_pay"));
-		int shoku_pay = Integer.parseInt(req.getParameter("shoku_pay"));
-		int nenkin = Integer.parseInt(req.getParameter("nenkin"));
-		int kenko = Integer.parseInt(req.getParameter("kenko"));
-		int koyo = Integer.parseInt(req.getParameter("koyo"));
-		int shotoku = Integer.parseInt(req.getParameter("shotoku"));
-		int etc = Integer.parseInt(req.getParameter("etc"));
-		
-		return new KyuyoRequest(shain_no,kizoku_ym,kihon_pay,kintai_pay,shoku_pay,nenkin,kenko,koyo,shotoku,etc);
+		int kihon_pay = parseIntWithDefault(req.getParameter("kihon_pay"), 0);
+		int kintai_pay = parseIntWithDefault(req.getParameter("kintai_pay"), 0);
+		int shoku_pay = parseIntWithDefault(req.getParameter("shoku_pay"), 0);
+		int nenkin = parseIntWithDefault(req.getParameter("nenkin"), 0);
+		int kenko = parseIntWithDefault(req.getParameter("kenko"), 0);
+		int koyo = parseIntWithDefault(req.getParameter("koyo"), 0);
+		int shotoku = parseIntWithDefault(req.getParameter("shotoku"), 0);
+		int etc = parseIntWithDefault(req.getParameter("etc"), 0);
+		return new KyuyoRequest(shain_no, kizoku_ym, kihon_pay, kintai_pay, shoku_pay, nenkin, kenko, koyo, shotoku,
+				etc);
+	}
+
+	// null오면 0으로 바꾸는 메서드
+	private int parseIntWithDefault(String value, int defaultValue) {
+		if (value != null) {
+			try {
+				return Integer.parseInt(value);
+			} catch (NumberFormatException e) {
+				// 숫자로 변환할 수 없는 경우, defaultValue(0)을 반환
+			}
+		}
+		return defaultValue;
 	}
 }
