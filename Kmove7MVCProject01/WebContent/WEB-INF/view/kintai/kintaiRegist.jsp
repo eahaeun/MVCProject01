@@ -90,16 +90,19 @@ else {shainNoInput .value = "";
 		<div style="flex: 1; margin-right: 10px;">
 			<table border="1">
 				<tr>
-					<th>社員番号</th>
-					<th>社員名</th>
-					<th>住所</th>
-					<th>部署名</th>
-					<th>役職名</th>
-					<th>連絡先電話番号</th>
-					<th>連絡先メールアドレス</th>
-
-					<td><input type="checkbox" name="shain_no_checkbox"
+				<td><input type="checkbox" name="shain_no_checkbox"
 						onclick="autoFillShainNo()"></td>
+					<th>社員番号</th>
+                <th>社員名</th>
+                <th>部署名</th>
+                <th>役職名</th>
+            </tr> 
+            <tr>
+            <td>${shain.shain_no}</td>
+            <td>${shain.shain_nm}</td>
+            <td>${shain.busho_nm}</td>
+            <td>${shain.yakushoku_nm}</td>
+        </tr> 
 				</tr>
 			</table>
 		</div>
@@ -148,6 +151,11 @@ else {shainNoInput .value = "";
 
 <script>
 	$(function() {
+		$("#KINTAI_KM").datepicker({
+			dateFormat : "yy-mm-dd",
+			changeMonth : true,
+			changeYear : true,
+		});
 		$("#KAISHI_YMD").datepicker({
 			dateFormat : "yy-mm-dd",
 			changeMonth : true,
