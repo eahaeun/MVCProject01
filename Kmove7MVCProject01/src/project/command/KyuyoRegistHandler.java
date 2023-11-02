@@ -18,11 +18,11 @@ public class KyuyoRegistHandler implements CommandHandler {
 		String kizoku_ym = req.getParameter("kizoku_ym");
 		int sikyu_pay = Integer.parseInt(req.getParameter("sikyu_pay"));
 		int kojyo_pay = Integer.parseInt(req.getParameter("kojyo_pay"));
-		
+
 		try {
-			kyuyoService.insertPay(shain_no,kizoku_ym,sikyu_pay,kojyo_pay); 
+			kyuyoService.insertPay(shain_no, kizoku_ym, sikyu_pay, kojyo_pay);
 			return "/WEB-INF/view/pay/kyuyoRegistSuccess.jsp";
-		} catch(Exception e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 			return FORM_VIEW;
 		}
