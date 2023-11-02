@@ -69,18 +69,6 @@ table {
 	border-collapse: collapse;
 	margin: 0 auto;
 }
-
-function autoFillShainNo() {var shainNoCheckbox =
-	document.getElementById("shainNoCheckbox");var shainNoInput =
-	document.getElementsByName("shain_no")[0];if (shainNoCheckbox.checked)
-	{ shainNoInput.value = "";
-	
-}
-
-else {shainNoInput .value = "";
-	
-}
-}
 </style>
 </head>
 <body>
@@ -163,6 +151,17 @@ else {shainNoInput .value = "";
 			changeYear : true,
 		});
 	});
+	function autoFillShainNo() {var shainNoCheckbox =
+		document.getElementById("shainNoCheckbox");var shainNoInput =
+		document.getElementsByName("shain_no")[0];if (shainNoCheckbox.checked)
+		{ shainNoInput.value = "";
+		
+	}
+
+	else {shainNoInput .value = "";
+		
+	}
+	}
 </script>
 
 </html>
