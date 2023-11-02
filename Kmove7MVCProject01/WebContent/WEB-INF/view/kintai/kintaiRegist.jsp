@@ -89,7 +89,7 @@ table {
 				<tr>
 				<td><input type="checkbox" name="shain_no_checkbox"
 						onclick="autoFillShainNo()"></td>
-					<td>${001}</td>
+					<td>${shain.shain_no}</td>
 					<td>${shain.shain_nm}</td>
 					<td>${shain.busho_nm}</td>
 					<td>${shain.yakushoku_nm}</td>
