@@ -110,12 +110,8 @@ else {shainNoInput .value = "";
 			<form>
 				<table border="1">
 					<tr>
-						<td>社員番号</td>
-						<td><input type="text" name="shain_no"></td>
-					</tr>
-					<tr>
 						<td>入力日</td>
-						<td><input type="text" name="KINTAI_KM"></td>
+						<td><input type="text" id = "KINTAI_KM"name="KINTAI_KM"></td>
 					</tr>
 					<tr>
 						<td>勤怠項目</td>
