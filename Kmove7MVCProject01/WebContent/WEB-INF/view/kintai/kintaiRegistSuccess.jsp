@@ -9,7 +9,7 @@
 <body>
 <script>
 alert("該当社員の勤怠が入力完了しました。");
-location.href = "kintailist.do";
+location.href = "kintaiRegist.do";
 </script>
 </body>
 </html>

@@ -15,7 +15,7 @@ public class KintaiDao {
 	public int insert(Connection conn, Kintai kintai) throws SQLException {
 		PreparedStatement pstmt = null;
 		try {
-			pstmt = conn.prepareStatement("insert into kintai_tbl_01 values (?,?," + "(to_date(?, 'RRMMDD')),(to_date(?,'RRMMDD')),(to_date(?,'RRMMDD')),"+"?");
+			pstmt = conn.prepareStatement("insert into kintai values (?,?,(TO_CHAR(?,'RRMMDD')),(TO_CHAR(?,'RRMMDD')),(TO_CHAR(?,'RRMMDD')),?)");
 			pstmt.setString(1, kintai.getSHAIN_NO());
 			pstmt.setString(2, kintai.getKINTAI_KM());
 			pstmt.setDate(3, kintai.getNYUROKU_YMD());
@@ -32,7 +32,7 @@ public class KintaiDao {
 		ResultSet rs = null;
 		try {
 			stmt = conn.createStatement();
-			rs = stmt.executeQuery("select count(*) from shain_tbl_01");
+			rs = stmt.executeQuery("select count(*) from shain");
 			if (rs.next()) {
 				return rs.getInt(1);
 			}
@@ -42,15 +42,15 @@ public class KintaiDao {
 			JdbcUtil.close(stmt);
 		}
 	}
-	public String selectByKinNo(Connection conn, String SHAIN_NO) throws SQLException {
+	public Kintai selectByKinNo(Connection conn, String SHAIN_NO) throws SQLException {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		try {
-			pstmt = conn.prepareStatement("select tstat from KINTAI_tbl where SHAIN_NO = ?");
+			pstmt = conn.prepareStatement("select tstat from KINTAI where SHAIN_NO = ?");
 			pstmt.setString(1, SHAIN_NO);
 			rs = pstmt.executeQuery();
 			if (rs.next()) {
-				return rs.getString("shain_no");
+				return null;
 			}
 			return null;
 		} finally {

@@ -22,7 +22,7 @@
 		</ul></li>
 	<li><a href="#">勤怠管理</a>
 		<ul class="submenu">
-			<li><a href="kintaiRegist.do">勤怠入力</a></li>
+			<li><a href="kintaiList.do">勤怠入力</a></li>
 			<li><a href="kintaiSearch.do">勤怠一覧</a></li>
 		</ul></li>
 	<li><a href="#">給与管理</a>

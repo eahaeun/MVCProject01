@@ -7,19 +7,18 @@ import javax.servlet.http.HttpServletResponse;
 
 import mvc.command.CommandHandler;
 import project.model.bean.Shain;
-import project.model.service.KintaiListService;
+import project.model.service.ShainListService;
 
-public class KintaiListHandler implements CommandHandler{
+public class KintaiListHandler implements CommandHandler {
+	ShainListService shainService = new ShainListService();
 
-	KintaiListService listService = new KintaiListService();
-		
-		@Override
-		public String process(HttpServletRequest req, HttpServletResponse res) throws Exception {
+	@Override
+	public String process(HttpServletRequest req, HttpServletResponse res) throws Exception {
 
-			List<Shain> shainList = listService.getList();
-			req.setAttribute("shainList", shainList);
-			return "/WEB-INF/view/kintaiList.jsp";
-		}
-	
-	
+		List<Shain> shainList = shainService.getRetShainList();
+		req.setAttribute("shain", shainList);
+		return "/WEB-INF/view/kintai/kintaiRegist.jsp";
+
+	}
+
 }

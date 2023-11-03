@@ -11,7 +11,7 @@ public class Kintai {
 	private Date SHURYO_YMD;
 	private int KINTAI_PAY;
 	
-	public Kintai(String SHAIN_NO, Date NYUROKU_YMD, Date KAISHI_YMD, Date SHURYO_YMD, int KINTAI_PAY) {
+	public Kintai(String SHAIN_NO, String KINTAI_KM, Date NYUROKU_YMD, Date KAISHI_YMD, Date SHURYO_YMD, int KINTAI_PAY) {
 		this.SHAIN_NO = SHAIN_NO;
 		this.KINTAI_KM = KINTAI_KM;
 		this.NYUROKU_YMD = NYUROKU_YMD;

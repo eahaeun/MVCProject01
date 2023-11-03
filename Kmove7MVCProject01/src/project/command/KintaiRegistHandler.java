@@ -7,17 +7,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import mvc.command.CommandHandler;
-import project.model.bean.Shain;
-import project.model.bean.Zeikin;
 import project.model.request.KintaiRequest;
 import project.model.service.KintaiRegistService;
-import project.model.service.KyuyoCalculateService;
+import project.model.service.ShainListService;
 
 public class KintaiRegistHandler implements CommandHandler{
-
+	ShainListService shainService = new ShainListService();
+	
 	private static final String FORM_VIEW = "/WEB-INF/view/kintai/kintaiRegist.jsp";
 	private KintaiRegistService regiService = new KintaiRegistService();
-	KyuyoCalculateService kyuyoService = new KyuyoCalculateService();
+	
 	@Override
 	public String process(HttpServletRequest req, HttpServletResponse res) throws Exception {
 		if(req.getMethod().equalsIgnoreCase("GET")) {
@@ -30,34 +29,29 @@ public class KintaiRegistHandler implements CommandHandler{
 		}
 	}
 	
-	private String processForm(HttpServletRequest req, HttpServletResponse res) {
-		String shain_no = req.getParameter("shain_no");
-		Shain shain = kyuyoService.searchShain(shain_no);
-		
-		req.setAttribute("shain", shain);
+	private String processForm(HttpServletRequest req, HttpServletResponse res) throws Exception {
 		return FORM_VIEW;
 	}
 	
 	private String processSubmit(HttpServletRequest req, HttpServletResponse res) {
-		String noVal = req.getParameter("shain_no");
-		int no = Integer.parseInt(noVal);
 		KintaiRequest regiReq = new KintaiRequest();
-		regiReq.setKINTAI_KM(req.getParameter("KINTAI_KM"));
+		regiReq.setSHAIN_NO(req.getParameter("shain_no_checkbox"));
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd"); 
 		LocalDate localDate = LocalDate.parse(req.getParameter("NYUROKU_YMD"), formatter); 
 		regiReq.setNYUROKU_YMD(java.sql.Date.valueOf(localDate)); 
+		regiReq.setKINTAI_KM(req.getParameter("KINTAI_KM"));
 		DateTimeFormatter formatter2 = DateTimeFormatter.ofPattern("yyyy-MM-dd"); 
 		LocalDate localDate2 = LocalDate.parse(req.getParameter("KAISHI_YMD"), formatter2); 
-		regiReq.setKAISHI_YMD(java.sql.Date.valueOf(localDate)); 
+		regiReq.setKAISHI_YMD(java.sql.Date.valueOf(localDate2)); 
 		DateTimeFormatter formatter3 = DateTimeFormatter.ofPattern("yyyy-MM-dd"); 
 		LocalDate localDate3 = LocalDate.parse(req.getParameter("SHURYO_YMD"), formatter3); 
-		regiReq.setSHURYO_YMD(java.sql.Date.valueOf(localDate));
+		regiReq.setSHURYO_YMD(java.sql.Date.valueOf(localDate3));
 		String payValue = req.getParameter("KINTAI_PAY");
 		int kintaiPay = Integer.parseInt(payValue);
 		regiReq.setKINTAI_PAY(kintaiPay);
 		try {
 			regiService.add(regiReq);
-			return "/WEB-INF/view/kintaiRegistSuccess.jsp";
+			return "/WEB-INF/view/kintai/kintaiRegistSuccess.jsp";
 		} catch(Exception e) {
 			e.printStackTrace();
 			return FORM_VIEW;
