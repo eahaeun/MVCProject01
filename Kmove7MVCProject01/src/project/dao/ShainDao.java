@@ -111,28 +111,58 @@ public class ShainDao {
 			JdbcUtil.close(pstmt);
 		}
 	}
-	
+
 	public Shain seaselect(Connection conn, String shain_no) throws SQLException {
-	    PreparedStatement pstmt = null;
-	    ResultSet rs = null;
-	    Shain result = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		Shain result = null;
 
-	    try {
-	        pstmt = conn.prepareStatement("SELECT * FROM shain WHERE shain_no = ?");
-	        pstmt.setString(1, shain_no);
-	        rs = pstmt.executeQuery();
+		try {
+			pstmt = conn.prepareStatement("SELECT * FROM shain WHERE shain_no = ?");
+			pstmt.setString(1, shain_no);
+			rs = pstmt.executeQuery();
 
-	        if (rs.next()) {
-	            result = convertShainList(rs);
-	        }
-	    } finally {
-	        JdbcUtil.close(rs);
-	        JdbcUtil.close(pstmt);
-	    }
+			if (rs.next()) {
+				result = convertShainList(rs);
+			}
+		} finally {
+			JdbcUtil.close(rs);
+			JdbcUtil.close(pstmt);
+		}
 
-	    return result;
+		return result;
 	}
-	
+
+	public Shain update(Connection conn, Shain shain) throws SQLException {
+		PreparedStatement pstmt = null;
+		Shain result = null;
+
+		try {
+			pstmt = conn.prepareStatement(
+					"UPDATE shain SET shain_nm = ?, address = ?, busho_nm = ?, yakushoku_nm = ?, kihon_pay = ?, renraku_tel = ?, renraku_email = ?, nyusha_ymd = ?, taishoku_ymd = ?, ginko_nm = ?, koza_num = ? WHERE shain_no = ?");
+			pstmt.setString(1, shain.getShain_nm());
+			pstmt.setString(2, shain.getAddress());
+			pstmt.setString(3, shain.getBusho_nm());
+			pstmt.setString(4, shain.getYakushoku_nm());
+			pstmt.setInt(5, shain.getKihon_pay());
+			pstmt.setString(6, shain.getRenraku_tel());
+			pstmt.setString(7, shain.getRenraku_email());
+			pstmt.setTimestamp(8, new Timestamp(shain.getNyusha_ymd().getTime()));
+			pstmt.setTimestamp(9, new Timestamp(shain.getTaishoku_ymd().getTime()));
+			pstmt.setString(10, shain.getGinko_nm());
+			pstmt.setString(11, shain.getKoza_num());
+			pstmt.setString(12, shain.getShain_no());
+
+			int rowsUpdated = pstmt.executeUpdate();
+
+			if (rowsUpdated > 0) {
+				result = shain;
+			}
+		} finally {
+			JdbcUtil.close(pstmt);
+		}
+		return result;
+	}
 
 	private Shain convertShainList(ResultSet rs) throws SQLException {
 		return new Shain(rs.getString("shain_no"), rs.getString("shain_nm"), rs.getString("address"),
