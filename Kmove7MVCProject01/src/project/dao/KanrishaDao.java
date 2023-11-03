@@ -38,4 +38,15 @@ public class KanrishaDao {
 			pstmt.executeUpdate();
 		}
 	}
+
+	public void update(Connection conn, Kanrisha kanrisha) throws SQLException {
+		try (PreparedStatement pstmt = conn
+				.prepareStatement("update kanrisha set kanrisha_nm = ?, kanrisha_pw = ? where kanrisha_uid = ?")) {
+
+			pstmt.setString(1, kanrisha.getKanrisha_nm());
+			pstmt.setString(2, kanrisha.getKanrisha_pw());
+			pstmt.setString(3, kanrisha.getKanrisha_uid());
+			pstmt.executeUpdate();
+		}
+	}
 }
