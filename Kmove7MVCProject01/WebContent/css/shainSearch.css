@@ -21,6 +21,7 @@ ul.menu {
 	margin: 0;
 }
 
+
 ul.menu li {
 	display: inline-block;
 	margin: 0 20px;
@@ -35,6 +36,8 @@ ul.menu li a {
 	transition: background-color 0.3s;
 	background-color: #f2f2f2;
 }
+
+
 
 ul.menu li a:hover {
 	background-color: #555;
@@ -72,6 +75,8 @@ ul.submenu li a {
 ul.submenu li a:hover {
 	background-color: #555;
 }
+
+/* 검색창 관련 */
 .search-box {
 	text-align: center;
 	margin-top: 20px;
