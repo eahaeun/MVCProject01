@@ -17,7 +17,6 @@
 			location.href = "kyuyoSearch.do";
 		</script>
 	</c:if>
-	<%@ include file="/WEB-INF/view/header.jsp"%>
 
 	<form action="kyuyoCalculate.do" method="get">
 		<div class="search-box">
