@@ -49,7 +49,7 @@ public class ShainRegistHandler implements CommandHandler {
 		shainReq.setRenraku_email(req.getParameter("renraku_email"));
 		String noval = req.getParameter("kihon_pay");
 		int kihon_pay = Integer.parseInt(noval);
-		shainReq.setKihon_pay(kihon_pay);
+		shainReq.setKihon_pay(kihon_pay*10000);
 		shainReq.setGinko_nm(req.getParameter("ginko_nm"));
 		shainReq.setKoza_num(req.getParameter("koza_num"));
 		shainReq.setZaishoku_st("在職");
