@@ -17,7 +17,7 @@ public class KintaiDao {
 	public int insert(Connection conn, Kintai kintai) throws SQLException {
 		PreparedStatement pstmt = null;
 		try {
-			pstmt = conn.prepareStatement("insert into kintai values (?,?,(TO_CHAR(?,'RRMMDD')),(TO_CHAR(?,'RRMMDD')),(TO_CHAR(?,'RRMMDD')),?)");
+			pstmt = conn.prepareStatement("insert into kintai values (kintai_seq.nextval,?,?,(TO_CHAR(?,'RRMMDD')),(TO_CHAR(?,'RRMMDD')),(TO_CHAR(?,'RRMMDD')),?)");
 			pstmt.setString(1, kintai.getSHAIN_NO());
 			pstmt.setString(2, kintai.getKINTAI_KM());
 			pstmt.setDate(3, kintai.getNYUROKU_YMD());
@@ -81,7 +81,7 @@ public class KintaiDao {
 	}
 	
 	private Kintai convertKintai(ResultSet rs) throws SQLException {
-		return new Kintai(rs.getString("SHAIN_NO"), rs.getString("KINTAI_KM"), rs.getDate("NYUROKU_YMD"), rs.getDate("KAISHI_YMD"),
+		return new Kintai(rs.getInt("KINTAI_NO"), rs.getString("SHAIN_NO"), rs.getString("KINTAI_KM"), rs.getDate("NYUROKU_YMD"), rs.getDate("KAISHI_YMD"),
 				rs.getDate("SHURYO_YMD"), rs.getInt("KINTAI_PAY"));
 	}
 
