@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>情報修正</title>
-    <link rel="stylesheet" type="text/css" href="./css/login.css">
+    <link rel="stylesheet" type="text/css" href="./css/kanrishaModify.css">
 </head>
 <body>
     <%@ include file="/WEB-INF/view/header.jsp" %>
@@ -18,9 +18,7 @@
             </div>
             <h2>情報修正</h2>
             <div>
-                <label for="id">ID:</label>
-                <% project.model.bean.Kanrisha kanrisha = (project.model.bean.Kanrisha) session.getAttribute("authUser"); %>
-                <%= kanrisha.getKanrisha_uid() %>
+                <label for="id">ID</label> : ${authUser.kanrisha_uid}
             </div>
             <div>
                 <label for="curPwd">現在PW:</label> <input type="password" name="curPwd">
