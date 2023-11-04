@@ -61,7 +61,7 @@
 						name="kihon_pay" id="basicSalary" class="right-align"
 						value=${shain.kihon_pay}></label><br> <label
 						for="holidayAllowance">休日手当: <input type="text"
-						name="kintai_pay" id="holidayAllowance" class="right-align"></label><br>
+						name="kintai_pay" id="holidayAllowance" class="right-align" value=${kintai_pay}></label><br>
 					<label for="mealAllowance">食費: <input type="text"
 						name="shoku_pay" id="mealAllowance" class="right-align"></label><br>
 				</div>

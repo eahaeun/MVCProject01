@@ -35,6 +35,11 @@ public class KyuyoCalculateHandler implements CommandHandler {
 			return FORM_VIEW;
 		}
 
+		// 휴일수당 출력을 위해 req영역에 저장
+		int kintai_pay = kyuyoService.getKintaiPay(shain_no);
+		System.out.println(kintai_pay);
+		req.setAttribute("kintai_pay", kintai_pay);
+
 		Zeikin zeikin = kyuyoService.calculateZeikin(shain.getKihon_pay());
 
 		req.setAttribute("shain", shain);
