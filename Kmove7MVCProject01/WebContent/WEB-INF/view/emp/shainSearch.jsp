@@ -11,9 +11,7 @@
 </head>
 <body>
 	<%@ include file="/WEB-INF/view/header.jsp"%>
-	<div class="title">
-		<h1>社員情報検索</h1>
-	</div>
+	<br/>
 	<!-- 검색 창과 버튼 -->
 	<form action="shainModify.do" method="get">
 		<div class="search-box">

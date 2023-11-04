@@ -4,7 +4,10 @@ h1 {
 	margin: 10px 0;
 }
 
-/* 스타일 설정 */
+h2.move-right {
+  margin-left: 150px;
+}
+
 body {
 	margin: 0;
 	padding: 0;
@@ -89,22 +92,6 @@ ul.menu li.logout a {
 	color: #fff;
 }
 
-/* 좌우배치 */
-.left-div {
-    float: left;
-    width: 50%; /* 왼쪽 div의 너비를 50%로 설정하여 화면의 왼쪽 절반을 차지하도록 합니다. */
-    padding: 10px; /* 원하는 여백 설정 */
-    box-sizing: border-box; /* 패딩과 테두리 포함한 전체 너비 설정 */
-}
-
-.right-div {
-    float: left;
-    width: 50%; /* 오른쪽 div의 너비를 50%로 설정하여 화면의 오른쪽 절반을 차지하도록 합니다. */
-    padding: 10px; /* 원하는 여백 설정 */
-    box-sizing: border-box; /* 패딩과 테두리 포함한 전체 너비 설정 */
-}
-
-
 /* 테이블 */
 table {
 	font-family: Arial, sans-serif;
@@ -126,61 +113,3 @@ th {
 tr:nth-child(even) {
 	background-color: #f2f2f2;
 }
-
-button {
-    margin-left: 380px;
-}
-
-
-/*민선*/
-
-/* h3 {
-	text-align: center;
-	background-color: #000;
-	color: #fff;
-	padding: 10px;
-}
-
-.container {
-	margin: 0 auto;
-	max-width: 800px;
-	padding: 20px;
-	background-color: #000;
-}
-
-table {
-	width: 100%;
-	border-collapse: collapse;
-}
-
-table, th, td {
-	border: 1px solid #ccc;
-}
-
-th, td {
-	padding: 10px;
-	text-align: left;
-}
-
-select, input[type="text"] {
-	width: 100%;
-	padding: 5px;
-}
-
-button {
-	background-color: #0074e4;
-	color: #000;
-	padding: 10px 20px;
-	border: none;
-	cursor: pointer;
-}
-
-button:hover {
-	background-color: #0056b3;
-}
-
-table {
-	width: 100%;
-	border-collapse: collapse;
-	margin: 0 auto;
-} */

@@ -10,10 +10,7 @@
 </head>
 <body>
 	<%@ include file="/WEB-INF/view/header.jsp" %>
-	<div class="title">
-		<h1>社員登録</h1>
-	</div>
-
+	<br/>
 	<form action="shainRegist.do" method="POST">
 		<div class="form-container">
 			<div class="section">

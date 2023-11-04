@@ -10,9 +10,7 @@
 </head>
 <body>
 	<%@ include file="/WEB-INF/view/header.jsp"%>
-	<div class="title">
-		<h1>社員一覧</h1>
-	</div>
+	<br/>
 	<ul class="menu">
 		<form action="shainList.do" method="GET">
 			<li><button type="submit" name="list" value="在職者">在職者</button></li>

@@ -10,10 +10,7 @@
 </head>
 <body>
 	<%@ include file="/WEB-INF/view/header.jsp"%>
-	<div class="title">
-		<h1>社員情報修正</h1>
-	</div>
-
+	<br/>
 	<form action="shainModify.do" method="get">
 		<div class="search-box">
 			<input type="text" class="search-input" placeholder="社員番号を入力"

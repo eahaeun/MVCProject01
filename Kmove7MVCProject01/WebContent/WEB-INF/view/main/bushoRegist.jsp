@@ -6,14 +6,14 @@
 <head>
     <meta charset="UTF-8">
     <title>部署登録</title>
-    <link rel="stylesheet" type="text/css" href="./css/kyuyoRegist.css">
+    <link rel="stylesheet" type="text/css" href="./css/bushoRegist.css">
 </head>
 <body>
 	<%@ include file="/WEB-INF/view/header.jsp" %>
     <div style="display: flex;">
 
         <div style="width: 50%; padding: 20px;">
-            <h2>部署リスト</h2>
+            <h2 class="move-right">部署リスト</h2>
             <table border="1">
                 <tr>
                     <th>部署名</th>
