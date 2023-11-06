@@ -1,3 +1,4 @@
+//근태 정보를 수정하고 관련된 데이터베이스 작업을 수행하는 클래스
 package project.model.service;
 
 import java.sql.Connection;
@@ -14,7 +15,7 @@ public class KintaiModifyService {
 	private KintaiDao kintaiDao = new KintaiDao();
 	
 	
-	
+	//특정 근태 정보를 검색하는 메서드
 	public List<Kintai> searchShain(int KINTAI_NO) {
 		// TODO Auto-generated method stub
 		Connection conn = null;
@@ -34,12 +35,13 @@ public class KintaiModifyService {
 		}
 	}
 	
+	//근태 정보를 수정하는 메서드
 	public void modify(KintaiRequest kinReq) {
 		Connection conn = null;
 		try {
 			conn = ConnectionProvider.getConnection();
 			conn.setAutoCommit(false);
-			
+			//근태 정보를 업데이트하는 데이터베이스 작업 수행
 			kintaiDao.update(conn, kinReq.getKINTAI_NO(), kinReq.getKINTAI_KM(), kinReq.getNYUROKU_YMD(),
 					kinReq.getKAISHI_YMD(), kinReq.getSHURYO_YMD(), kinReq.getKINTAI_PAY());
 			conn.commit();

@@ -1,3 +1,4 @@
+//근태 데이터베이스 테이블과 상호작용하는 DAO클래스
 package project.dao;
 
 import java.sql.Connection;
@@ -14,6 +15,7 @@ import project.model.bean.Kintai;
 
 public class KintaiDao {
 
+	//Kintai 테이블에 새로운 레코드를 삽입하는 메서드
 	public int insert(Connection conn, Kintai kintai) throws SQLException {
 		PreparedStatement pstmt = null;
 		try {
@@ -31,6 +33,7 @@ public class KintaiDao {
 		}
 	}
 
+	//테이블의 레코드 수를 반환하는 메서드
 	public int selectCount(Connection conn) throws SQLException {
 		Statement stmt = null;
 		ResultSet rs = null;
@@ -47,6 +50,7 @@ public class KintaiDao {
 		}
 	}
 
+	//사원 번호에 따른 Kintai정보를 조회하는 메서드
 	public List<Kintai> selectByShainNo(Connection conn, String SHAIN_NO) throws SQLException {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -65,6 +69,7 @@ public class KintaiDao {
 		}
 	}
 
+	//Kintai 번호에 따른 Kintai 정보를 조회하는 메서드
 	public List<Kintai> selectByKintaiNo(Connection conn, int KINTAI_NO) throws SQLException {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -83,6 +88,7 @@ public class KintaiDao {
 		}
 	}
 
+	//Kintai 정보를 수정하는 메서드
 	public int update(Connection conn, int KINTAI_NO, String KINTAI_KM, Date NYUROKU_YMD, Date KAISHI_YMD,
 			Date SHURYO_YMD, int KINTAI_PAY) throws SQLException {
 		PreparedStatement pstmt = null;
@@ -102,6 +108,7 @@ public class KintaiDao {
 		}
 	}
 
+	//ResultSet에서 Kintai 객체로 변환하는 메서드
 	private Kintai convertKintai(ResultSet rs) throws SQLException {
 		return new Kintai(rs.getInt("KINTAI_NO"), rs.getString("SHAIN_NO"), rs.getString("KINTAI_KM"),
 				rs.getDate("NYUROKU_YMD"), rs.getDate("KAISHI_YMD"), rs.getDate("SHURYO_YMD"), rs.getInt("KINTAI_PAY"));

@@ -1,3 +1,4 @@
+//근태 정보를 나타내는 객체를 생성하고 관리하는 클래스
 package project.model.request;
 
 import java.sql.Date;
@@ -46,6 +47,7 @@ public class KintaiRequest {
 		return KINTAI_PAY;
 	}
 	
+	//유효성 검사를 위한 메서드
 	public void validate(Map<String,Boolean>errors) {
 		if(SHAIN_NO == null || SHAIN_NO.trim().isEmpty()) {
 			errors.put("SHAIN_NO", Boolean.TRUE);

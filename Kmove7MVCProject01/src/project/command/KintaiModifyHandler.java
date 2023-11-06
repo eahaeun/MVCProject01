@@ -33,6 +33,7 @@ public class KintaiModifyHandler implements CommandHandler{
 		}
 	}
 	
+	//GET 요청 처리
 	private String processForm(HttpServletRequest req, HttpServletResponse res) throws Exception {
 		String noValue = req.getParameter("KINTAI_NO");
 		int kintaiNo = Integer.parseInt(noValue);
@@ -46,10 +47,11 @@ public class KintaiModifyHandler implements CommandHandler{
 		return FORM_VIEW;
 	}
 
-
+	//POST 요청 처리
 	private String processSubmit(HttpServletRequest req, HttpServletResponse res) {
 		KintaiRequest regiReq = new KintaiRequest();
 		
+		//KINTAI_NO 파라미터를 가져와 정수로 변환
 		int kintai_no = regiReq.getKINTAI_NO();
 		List<Kintai> kintai = kinService.searchShain(kintai_no);
 		req.setAttribute("kintai", kintai);
@@ -57,9 +59,11 @@ public class KintaiModifyHandler implements CommandHandler{
 		String noValue = req.getParameter("KINTAI_NO");
 		int kintaiNO = Integer.parseInt(noValue);
 		regiReq.setKINTAI_NO(kintaiNO);
+		//날짜 문자열을 파싱하여 날짜 형식으로 변환
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd"); 
 		LocalDate localDate = LocalDate.parse(req.getParameter("NYUROKU_YMD"), formatter); 
 		regiReq.setNYUROKU_YMD(java.sql.Date.valueOf(localDate)); 
+		//다른 필드들도 위의 경우와 비슷하게 처리
 		regiReq.setKINTAI_KM(req.getParameter("KINTAI_KM"));
 		DateTimeFormatter formatter2 = DateTimeFormatter.ofPattern("yyyy-MM-dd"); 
 		LocalDate localDate2 = LocalDate.parse(req.getParameter("KAISHI_YMD"), formatter2); 
@@ -67,15 +71,16 @@ public class KintaiModifyHandler implements CommandHandler{
 		DateTimeFormatter formatter3 = DateTimeFormatter.ofPattern("yyyy-MM-dd"); 
 		LocalDate localDate3 = LocalDate.parse(req.getParameter("SHURYO_YMD"), formatter3); 
 		regiReq.setSHURYO_YMD(java.sql.Date.valueOf(localDate3));
+		//KINTAI_PAY 파라미터를 가져와 정수로 변환
 		String payValue = req.getParameter("KINTAI_PAY");
 		int kintaiPay = Integer.parseInt(payValue);
 		regiReq.setKINTAI_PAY(kintaiPay);
 		try {
-			kinService.modify(regiReq);
-			return "/WEB-INF/view/kintai/kintaiModifySuccess.jsp";
+			kinService.modify(regiReq);	//Kintai 수정 메서드 호출
+			return "/WEB-INF/view/kintai/kintaiModifySuccess.jsp";	//성공 시의 jsp 경로 반환
 		} catch(Exception e) {
 			e.printStackTrace();
-			return FORM_VIEW;
+			return FORM_VIEW;	//예외 발생 시에는 수정 폼으로 돌아감
 		}
 	}
 }
