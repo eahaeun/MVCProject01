@@ -51,7 +51,7 @@ public class ShainModifyHandler implements CommandHandler {
 		shain.setYakushoku_nm(req.getParameter("yakushoku_nm"));
 		String noval = req.getParameter("kihon_pay");
 		int kihon_pay = Integer.parseInt(noval);
-		shain.setKihon_pay(kihon_pay);
+		shain.setKihon_pay(kihon_pay*10000);
 		shain.setRenraku_tel(req.getParameter("renraku_tel"));
 		shain.setRenraku_email(req.getParameter("renraku_email"));
 		SimpleDateFormat start = new SimpleDateFormat("yyyy-MM-dd");
