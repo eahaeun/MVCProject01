@@ -1,0 +1,132 @@
+@charset "UTF-8";
+
+h1 {
+	margin: 10px 0;
+}
+
+body {
+	margin: 0;
+	padding: 0;
+	font-family: Arial, sans-serif;
+}
+
+.title {
+	background-color: #333; /* 타이틀 배경색 추가 */
+	color: #fff; /* 타이틀 텍스트 색상 추가 */
+	text-align: center;
+	padding: 10px 0;
+}
+
+ul.menu {
+	list-style: none;
+	padding: 0;
+	text-align: center;
+	background-color: #f2f2f2;
+	margin: 0;
+}
+
+ul.menu li {
+	display: inline-block;
+	margin: 0 20px;
+	position: relative;
+}
+
+ul.menu li a {
+	text-decoration: none;
+	color: #000;
+	display: block;
+	padding: 10px 20px;
+	transition: background-color 0.3s;
+	background-color: #f2f2f2;
+}
+
+ul.menu li a:hover {
+	background-color: #555;
+	color: #fff;
+}
+
+ul.menu li ul.submenu {
+	display: none;
+	position: absolute;
+	top: 100%;
+	left: 0;
+	list-style: none;
+	padding: 0;
+}
+
+ul.menu li:hover ul.submenu {
+	display: block;
+	background-color: #333;
+	border-top: 1px solid #555;
+}
+
+ul.submenu li {
+	margin: 0;
+}
+
+ul.submenu li a {
+	display: block;
+	padding: 10px 20px;
+	color: #000;
+	text-decoration: none;
+	transition: background-color 0.3s;
+}
+
+ul.submenu li a:hover {
+	background-color: #555;
+}
+
+/* 로그아웃 버튼 스타일 추가 */
+ul.menu li.logout {
+	position: absolute;
+	top: 0;
+	right: 10px;
+}
+
+ul.menu li.logout a {
+	background-color: #555;
+	color: #fff;
+}
+
+/* 검색창 관련 */
+.search-box {
+	text-align: center;
+	margin-top: 20px;
+}
+
+.search-input {
+	padding: 5px;
+}
+
+.search-button {
+	padding: 5px 10px;
+	background-color: #555;
+	color: #fff;
+	border: none;
+	cursor: pointer; /* 마우스 커서 스타일 지정 */
+}
+
+table {
+	font-family: Arial, sans-serif;
+	border-collapse: collapse;
+	width: 60%;
+	margin: 0 auto;
+}
+
+th, td {
+	border: 1px solid #dddddd;
+	text-align: left;
+	padding: 5px;
+}
+
+th {
+	background-color: #f2f2f2;
+}
+
+tr:nth-child(even) {
+	background-color: #fff;
+}
+
+.right-align {
+	float: right;
+}

@@ -1,42 +1,48 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>勤怠一覧</title>
-<div align="center">社員照会</div>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>会員登録ページ</title>
+<link rel="stylesheet" type="text/css" href="./css/kintaiList.css">
 </head>
 <body>
-	<%@ include file="/WEB-INF/view/header.jsp" %>
-	<div align="center">
-		<h3>社員番号照会</h3><br/>
-		<table border="1">
-			<tr>
-				<th>社員番号</th>
-			</tr>
-			<c:choose>
-				<c:when test="${shainList==null}">
-					<tr>
-						<td colspan=7><b>一致する社員番号がありません。</b></td>
-					</tr>
-				</c:when>
-				<c:when test="${shainList != null }">
-					<c:forEach var="shain" items="${shainList}">
-						<tr>
-							<td>${shain.shain_no}</td>
-						</tr>
-					</c:forEach>
-				</c:when>
-			</c:choose>
+	<%@ include file="/WEB-INF/view/header.jsp"%>
 
-		</table>
-	</div>
+	<!-- 검색 창과 버튼 -->
+	<form action="kyuyoCalculate.do" method="get">
+		<div class="search-box">
+			<input type="text" class="search-input" placeholder="社員番号を入力"
+				name="shain_no"> <input type="submit" value="検索"
+				class="search-button">
+		</div>
+	</form>
+	<br />
+	<br />
+
+	<table>
+		<tr>
+			<th>勤怠項目</th>
+			<th>入力日</th>
+			<th>開始日</th>
+			<th>終了日</th>
+			<th>手当</th>
+		</tr>
+
+		<c:forEach var="kintai" items="${kintaiList}">
+			<tr style="cursor: pointer;"
+				onClick="location.href='kintaiModify.do?kintai_no=' + '${kintai.KINTAI_NO}'">
+				<td>${kintai.KINTAI_KM}</td>
+				<td>${kintai.NYUROKU_YMD}</td>
+				<td>${kintai.KAISHI_YMD}</td>
+				<td>${kintai.SHURYO_YMD}</td>
+				<td>${kintai.KINTAI_PAY}</td>
+			</tr>
+		</c:forEach>
+	</table>
+	
 </body>
-<footer>
-	<br/><br/>
-	<div align="center">Copyright</div>
-</footer>
 </html>
