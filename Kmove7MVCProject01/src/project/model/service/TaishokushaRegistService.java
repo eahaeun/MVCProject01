@@ -13,7 +13,7 @@ import project.model.request.TaishokuRequest;
 public class TaishokushaRegistService {
 	private TaishokushaDao taishokushaDao = new TaishokushaDao();
 	private ShainDao shainDao = new ShainDao();
-
+	// 퇴직자 등록
 	public void taishoku(TaishokuRequest taishokuReq) {
 		Connection conn = null;
 		try {
@@ -30,7 +30,7 @@ public class TaishokushaRegistService {
 			JdbcUtil.close(conn);
 		}
 	}
-
+	// 직원 상태 갱신
 	public void updateStatement(TaishokuRequest taishokuReq) {
 		Connection conn = null;
 		try {

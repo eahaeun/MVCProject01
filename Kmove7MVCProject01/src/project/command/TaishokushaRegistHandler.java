@@ -15,6 +15,7 @@ public class TaishokushaRegistHandler implements CommandHandler {
 	private TaishokushaRegistService taishokushaRegistService = new TaishokushaRegistService();
 
 	@Override
+	// 요청 방식에 따른 처리
 	public String process(HttpServletRequest req, HttpServletResponse res) throws Exception {
 		// TODO Auto-generated method stub
 		if (req.getMethod().equalsIgnoreCase("GET")) {
@@ -27,13 +28,13 @@ public class TaishokushaRegistHandler implements CommandHandler {
 			return null;
 		}
 	}
-
+	// FORM을 표시
 	private String processForm(HttpServletRequest req, HttpServletResponse res) {
 		String shain_no = req.getParameter("shain_no");
 		req.setAttribute("shain_no", shain_no);
 		return FORM_VIEW;
 	}
-
+	// 데이터 제출
 	private String processSubmit(HttpServletRequest req, HttpServletResponse res) throws ParseException {
 		TaishokuRequest taishokuReq = new TaishokuRequest();
 		taishokuReq.setShain_no(req.getParameter("shain_no"));

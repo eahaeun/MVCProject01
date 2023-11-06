@@ -12,7 +12,7 @@ import project.model.bean.Shain;
 import project.model.bean.Taishokusha;
 
 public class TaishokushaDao {
-	
+	// 사원 번호 기준으로 퇴직자 정보 조회
 	public Taishokusha selectByNo(Connection conn, String shain_no) throws SQLException {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -31,7 +31,7 @@ public class TaishokushaDao {
 			JdbcUtil.close(pstmt);
 		}
 	}
-	
+	// 퇴직자 정보 삽입
 	public void insert(Connection conn, Taishokusha taishokusha) throws SQLException {
         try (PreparedStatement pstmt = conn
                 .prepareStatement("insert into taishokusha values(?, ?, ?, ?)")) {
@@ -42,7 +42,7 @@ public class TaishokushaDao {
             pstmt.executeUpdate();
         }
     }
-	
+	// 형변환
 	private Taishokusha convertTaishokusha(ResultSet rs) throws SQLException {
 		return new Taishokusha(
 				rs.getString("shain_no"), 
@@ -50,7 +50,7 @@ public class TaishokushaDao {
 				rs.getString("taishoku_renraku"), 
 				rs.getInt("taishoku_pay"));
 	}
-	
+	// 퇴직자 정보 조회
 	public List<Taishokusha> select(Connection conn) throws SQLException {
         PreparedStatement pstmt = null;
         ResultSet rs = null;
@@ -67,7 +67,7 @@ public class TaishokushaDao {
             JdbcUtil.close(pstmt);
         }
     }
-	
+	// 사원 번호 기준으로 퇴직자 정보 검색
 	public Taishokusha search(Connection conn, String shain_no) throws SQLException {
         PreparedStatement pstmt = null;
         ResultSet rs = null;
@@ -88,7 +88,7 @@ public class TaishokushaDao {
 
         return result;
     }
-	
+	// 퇴직자 정보 갱신
 	public Taishokusha update(Connection conn, Taishokusha taishokusha) throws SQLException {
         PreparedStatement pstmt = null;
         Taishokusha result = null;
@@ -110,7 +110,7 @@ public class TaishokushaDao {
         }
         return result;
     }
-	
+	// 형변환
 	private Taishokusha convertTaishokushaList(ResultSet rs) throws SQLException {
 		return new Taishokusha(
 				rs.getString("shain_no"), 

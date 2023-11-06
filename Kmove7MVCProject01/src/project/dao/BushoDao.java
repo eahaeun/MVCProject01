@@ -11,7 +11,7 @@ import jdbc.JdbcUtil;
 import project.model.bean.Busho;
 
 public class BushoDao {
-
+	// 부서 정보 삽입
 	public void insert(Connection conn, Busho busho) throws SQLException {
 		try (PreparedStatement pstmt = conn.prepareStatement("insert into busho values(?,?,?)")) {
 			pstmt.setString(1, busho.getBusho_nm());
@@ -20,7 +20,7 @@ public class BushoDao {
 			pstmt.executeUpdate();
 		}
 	}
-
+	// 부서 정보 조회
 	public List<Busho> select(Connection conn) throws SQLException {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -37,7 +37,7 @@ public class BushoDao {
 			JdbcUtil.close(pstmt);
 		}
 	}
-
+	// 형변환
 	private Busho convertBusho(ResultSet rs) throws SQLException {
 		return new Busho(rs.getString("busho_nm"), 
 				rs.getString("tanto_nm"), 

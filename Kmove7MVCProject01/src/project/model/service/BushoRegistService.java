@@ -13,7 +13,7 @@ import project.model.request.BushoRequest;
 public class BushoRegistService {
 
 	BushoDao bushoDao = new BushoDao();
-
+	// 부서 등록
 	public void regist(BushoRequest regReq) {
 		Connection conn = null;
 		try {
@@ -29,7 +29,7 @@ public class BushoRegistService {
 			JdbcUtil.close(conn);
 		}
 	}
-	
+	// 부서 리스트 조회
 	public List<Busho> selectList() {
 		Connection conn = null;
 		try {

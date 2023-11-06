@@ -17,6 +17,7 @@ public class BushoRegistHandler implements CommandHandler {
 	BushoRegistService bushoService = new BushoRegistService();
 
 	@Override
+	// 요청 방식에 따른 처리
 	public String process(HttpServletRequest req, HttpServletResponse res) throws Exception {
 		// TODO Auto-generated method stub
 		if (req.getMethod().equalsIgnoreCase("GET")) {
@@ -28,13 +29,13 @@ public class BushoRegistHandler implements CommandHandler {
 			return null;
 		}
 	}
-	
+	// FORM을 표시
 	private String processForm(HttpServletRequest req, HttpServletResponse res) {
 		List<Busho> bushoList = bushoService.selectList();
         req.setAttribute("bushoList", bushoList);
 		return FORM_VIEW;
 	}
-
+	// 데이터 제출
 	private String processSubmit(HttpServletRequest req, HttpServletResponse res) throws ParseException {	// POST일 경우
 	    BushoRequest regReq = new BushoRequest();
 	    regReq.setBusho_nm(req.getParameter("busho_nm"));

@@ -10,7 +10,7 @@ import project.model.bean.Taishokusha;
 
 public class TaishokushaSearchService {
 	private TaishokushaDao taishokushaDao = new TaishokushaDao();
-
+	// 퇴직자 정보 검색
 	public Taishokusha searchTaishokusha(String shain_no) {
 		Connection conn = null;
 		try {
