@@ -4,17 +4,21 @@ import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import mvc.command.CommandHandler;
+import project.model.bean.Busho;
 import project.model.bean.Shain;
 import project.model.service.ShainModifyService;
+import project.model.service.ShainRegistService;
 
 public class ShainModifyHandler implements CommandHandler {
 	private static final String FORM_VIEW = "/WEB-INF/view/emp/shainModify.jsp";
 	ShainModifyService shainService = new ShainModifyService();
+	ShainRegistService shainRegistService = new ShainRegistService();
 
 	@Override
 	public String process(HttpServletRequest req, HttpServletResponse res) throws Exception {
@@ -35,11 +39,18 @@ public class ShainModifyHandler implements CommandHandler {
 
 		req.setAttribute("shain", shain);
 
+		// 부서선택
+		List<Busho> bushoList = shainRegistService.selectBusho();
+		req.setAttribute("bushoList", bushoList);
 		return FORM_VIEW;
 	}
 
 	private String processSubmit(HttpServletRequest req, HttpServletResponse res) throws SQLException, ParseException {
 		String shain_no = req.getParameter("shain_no");
+
+		// 부서선택
+		List<Busho> bushoList = shainRegistService.selectBusho();
+		req.setAttribute("bushoList", bushoList);
 
 		// 기존의 Shain 객체를 가져와서 수정하기
 		Shain shain = shainService.searchShain(shain_no);
@@ -51,7 +62,7 @@ public class ShainModifyHandler implements CommandHandler {
 		shain.setYakushoku_nm(req.getParameter("yakushoku_nm"));
 		String noval = req.getParameter("kihon_pay");
 		int kihon_pay = Integer.parseInt(noval);
-		shain.setKihon_pay(kihon_pay*10000);
+		shain.setKihon_pay(kihon_pay * 10000);
 		shain.setRenraku_tel(req.getParameter("renraku_tel"));
 		shain.setRenraku_email(req.getParameter("renraku_email"));
 		SimpleDateFormat start = new SimpleDateFormat("yyyy-MM-dd");

@@ -42,12 +42,9 @@
 				<!-- 주소 -->
 				部署名: <select name="busho_nm" value=${shain.busho_nm}>
 					<!-- 부서 -->
-					<option value="人事部">人事部</option>
-					<!-- 인사부 -->
-					<option value="財務部">財務部</option>
-					<!-- 재무부 -->
-					<option value="営業部">営業部</option>
-					<!-- 영업부 -->
+					<c:forEach var="busho" items="${bushoList}">
+						<option value="${busho.busho_nm}">${busho.busho_nm}</option>
+					</c:forEach>
 				</select><br> 役職名: <input type="text" name="yakushoku_nm"
 					value=${shain.yakushoku_nm}> <br>
 				<!-- 직책명 -->

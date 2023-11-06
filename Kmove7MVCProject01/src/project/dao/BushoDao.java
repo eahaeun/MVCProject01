@@ -43,4 +43,6 @@ public class BushoDao {
 				rs.getString("tanto_nm"), 
 				rs.getString("busho_renraku"));
 	}
+	
+	
 }

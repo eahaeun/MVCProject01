@@ -9,8 +9,8 @@
 <link rel="stylesheet" type="text/css" href="./css/shain.css">
 </head>
 <body>
-	<%@ include file="/WEB-INF/view/header.jsp" %>
-	<br/>
+	<%@ include file="/WEB-INF/view/header.jsp"%>
+	<br />
 	<form action="shainRegist.do" method="POST">
 		<div class="form-container">
 			<div class="section">
@@ -37,12 +37,10 @@
 				部署名: <select name="busho_nm" value="${param.busho_nm}"><c:if
 						test="${errors.busho}">부서를 입력하세요.</c:if>
 					<!-- 부서 -->
-					<option value="人事部">人事部</option>
-					<!-- 인사부 -->
-					<option value="財務部">財務部</option>
-					<!-- 재무부 -->
-					<option value="営業部">営業部</option>
-					<!-- 영업부 -->
+					<c:forEach var="busho" items="${bushoList}">
+						<option value="${busho.busho_nm}">${busho.busho_nm}</option>
+					</c:forEach>
+
 				</select><br> 役職名: <input type="text" name="yakushoku_nm"
 					value="${param.yakushoku_nm}">
 				<c:if test="${errors.yakushoku_nm}">직책명을 입력하세요.</c:if>

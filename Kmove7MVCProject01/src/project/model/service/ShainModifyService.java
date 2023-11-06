@@ -2,14 +2,18 @@ package project.model.service;
 
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.List;
 
 import jdbc.JdbcUtil;
 import jdbc.connection.ConnectionProvider;
+import project.dao.BushoDao;
 import project.dao.ShainDao;
+import project.model.bean.Busho;
 import project.model.bean.Shain;
 
 public class ShainModifyService {
 	private ShainDao shainDao = new ShainDao();
+	private BushoDao bushoDao = new BushoDao();
 
 	public Shain searchShain(String shain_no) {
 		Connection conn = null;
@@ -39,5 +43,22 @@ public class ShainModifyService {
 	    }
 	    
 	    return updatedShain;
+	}
+	
+	public List<Busho> selectBusho() {
+		Connection conn = null;
+		try {
+			conn = ConnectionProvider.getConnection();
+			conn.setAutoCommit(false);
+			
+			List<Busho> bushoList = bushoDao.select(conn);
+			conn.commit();
+			return bushoList;
+		}catch(SQLException e) {
+			JdbcUtil.rollback(conn);
+			throw new RuntimeException(e);
+		}finally {
+			JdbcUtil.close(conn);
+		}
 	}
 }

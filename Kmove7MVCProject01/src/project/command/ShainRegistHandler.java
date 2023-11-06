@@ -3,12 +3,14 @@ package project.command;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import mvc.command.CommandHandler;
 import project.exception.DuplicatedException;
+import project.model.bean.Busho;
 import project.model.request.ShainRequest;
 import project.model.service.ShainRegistService;
 
@@ -31,10 +33,16 @@ public class ShainRegistHandler implements CommandHandler {
 	}
 
 	private String processForm(HttpServletRequest req, HttpServletResponse res) {
+		
+		List<Busho> bushoList = shainRegistService.selectBusho();
+		req.setAttribute("bushoList", bushoList);
 		return FORM_VIEW;
 	}
 
 	private String processSubmit(HttpServletRequest req, HttpServletResponse res) throws ParseException {
+		List<Busho> bushoList = shainRegistService.selectBusho();
+		req.setAttribute("bushoList", bushoList);
+		
 		ShainRequest shainReq = new ShainRequest();
 		shainReq.setShain_no(req.getParameter("shain_no"));
 		shainReq.setShain_nm(req.getParameter("shain_nm"));
