@@ -1,4 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <div class="title">
 	<h1>
 		<a href="main.do" style="text-decoration: none; color: white;">人事・給与管理システム</a>
@@ -7,8 +8,11 @@
 <ul class="menu">
 	<!-- 로그인 되어있을 때만 상단에 로그아웃 버튼 추가 -->
 	<c:if test="${!empty authUser}">
-		<li class="logout"><a href="logout.do">ログアウト</a></li>
+		<li style="position: absolute; top: 0; right: 10px;" class="logout">
+			<a href="logout.do" style="background-color: #555; color: #fff;">ログアウト</a>
+		</li>
 	</c:if>
+
 	<li><a href="#">基本設定</a>
 		<ul class="submenu">
 			<li><a href="kanrishaModify.do">情報修正</a></li>

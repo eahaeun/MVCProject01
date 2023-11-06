@@ -105,3 +105,15 @@ ul.submenu li a:hover {
 	border: none;
 	cursor: pointer; /* 마우스 커서 스타일 지정 */
 }
+
+/* 로그아웃 버튼 스타일 추가 */
+ul.menu li.logout {
+	position: absolute;
+	top: 0;
+	right: 10px;
+}
+
+ul.menu li.logout a {
+	background-color: #555;
+	color: #fff;
+}

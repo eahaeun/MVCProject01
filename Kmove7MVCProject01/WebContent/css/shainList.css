@@ -96,3 +96,15 @@ th {
 tr:nth-child(even) {
 	background-color: #f2f2f2;
 }
+
+/* 로그아웃 버튼 스타일 추가 */
+ul.menu li.logout {
+	position: absolute;
+	top: 0;
+	right: 10px;
+}
+
+ul.menu li.logout a {
+	background-color: #555;
+	color: #fff;
+}

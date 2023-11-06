@@ -1,5 +1,17 @@
 @charset "UTF-8";
 
+/* 로그아웃 버튼 스타일 추가 */
+ul.menu li.logout {
+	position: absolute;
+	top: 0;
+	right: 10px;
+}
+
+ul.menu li.logout a {
+	background-color: #555;
+	color: #fff;
+}
+
 .form-container {
     border: 2px solid black;
     padding: 10px;
@@ -33,3 +45,4 @@ input[type="submit"] {
     border: none;
     cursor: pointer;
 }
+
