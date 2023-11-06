@@ -45,6 +45,7 @@ public class TaishokushaRegistHandler implements CommandHandler {
 		taishokuReq.setTaishoku_pay(taishoku_pay);
 		
 		try {
+			taishokushaRegistService.updateStatement(taishokuReq);
 			taishokushaRegistService.taishoku(taishokuReq);
 			return "/WEB-INF/view/retire/taishokuRegistSuccess.jsp";
 		} catch (DuplicatedException e) {

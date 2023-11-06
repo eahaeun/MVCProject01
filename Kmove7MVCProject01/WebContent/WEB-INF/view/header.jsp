@@ -27,7 +27,6 @@
 	<li><a href="#">勤怠管理</a>
 		<ul class="submenu">
 			<li><a href="kintaiList.do">勤怠入力</a></li>
-			<li><a href="kintaiSearch.do">勤怠一覧</a></li>
 		</ul></li>
 	<li><a href="#">給与管理</a>
 		<ul class="submenu">
@@ -37,7 +36,6 @@
 	<li><a href="#">退職管理</a>
 		<ul class="submenu">
 			<li><a href="taishokuSearch.do">退職処理</a></li>
-			<li><a href="taishokukinSearch.do">退職給与入力</a></li>
 		</ul></li>
 </ul>
 <br />

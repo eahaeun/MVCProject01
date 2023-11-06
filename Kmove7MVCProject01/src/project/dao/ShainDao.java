@@ -172,4 +172,12 @@ public class ShainDao {
 				rs.getString("zaishoku_st"));
 	}
 
+	// 데이터 수정
+	public int updateStatement(Connection conn, String shain_no) throws SQLException {
+		try (PreparedStatement pstmt = conn
+				.prepareStatement("UPDATE shain SET zaishoku_st = '退職' WHERE shain_no=?")) {
+			pstmt.setString(1, shain_no);
+			return pstmt.executeUpdate();
+		}
+	}
 }

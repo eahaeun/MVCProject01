@@ -80,6 +80,8 @@
 		<url-pattern>/kintaiModify.do</url-pattern>
 		<url-pattern>/kintaiList.do</url-pattern>
 		<url-pattern>/kanrishaModify.do</url-pattern>
+		<url-pattern>/taishokuSearch.do</url-pattern>
+		<url-pattern>/taishokuRegist.do</url-pattern>
 	</filter-mapping>
 
 	<welcome-file-list>
