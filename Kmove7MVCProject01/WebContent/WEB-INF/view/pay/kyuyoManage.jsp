@@ -11,6 +11,8 @@
 </head>
 <body>
 	<br />
+	
+	<!-- 該当社員の給与履歴を表示 -->
 	<table>
 		<tr>
 			<th colspan="5" style="text-align: left;">・氏名：${shain.shain_nm}

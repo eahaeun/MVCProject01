@@ -12,6 +12,8 @@
 <body>
 	<%@ include file="/WEB-INF/view/header.jsp" %>
 	<br />
+	
+	<!-- 給与を支給月別に表示 -->
 	<table>
 		<tr>
 			<th>帰属年月</th>

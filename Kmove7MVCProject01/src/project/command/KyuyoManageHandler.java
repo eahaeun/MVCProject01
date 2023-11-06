@@ -16,6 +16,8 @@ public class KyuyoManageHandler implements CommandHandler {
 	@Override
 	public String process(HttpServletRequest req, HttpServletResponse res) throws Exception {
 		String shain_no = req.getParameter("shain_no");
+		
+		//받아온 사원번호로 그 사원의 급여이력과 사원정보 불러오기
 		List<Kyuyo> kyuyo = kyuyoService.getKyuyo(shain_no);
 		Shain shain = kyuyoService.getShain(shain_no);
 		req.setAttribute("kyuyo", kyuyo);

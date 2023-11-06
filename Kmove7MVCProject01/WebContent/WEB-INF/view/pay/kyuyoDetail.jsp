@@ -12,6 +12,8 @@
 <body>
 	<%@ include file="/WEB-INF/view/header.jsp"%>
 	<br />
+	
+	<!-- 該当する帰属年月に給与情報を持っている社員の情報を表示 -->
 	<table>
 		<tr>
 			<th colspan="8" style="text-align: left;">・帰属年月：${kizoku_ym}</th>

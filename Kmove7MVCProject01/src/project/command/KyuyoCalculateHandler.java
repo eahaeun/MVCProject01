@@ -31,6 +31,7 @@ public class KyuyoCalculateHandler implements CommandHandler {
 	private String processForm(HttpServletRequest req, HttpServletResponse res) throws SQLException {
 		String shain_no = req.getParameter("shain_no");
 		Shain shain = kyuyoService.searchShain(shain_no);
+		//해당하는 사원 번호가 없으면 kyuyoCalculate.jsp로 돌아감
 		if (shain == null) {
 			return FORM_VIEW;
 		}
@@ -41,7 +42,6 @@ public class KyuyoCalculateHandler implements CommandHandler {
 		req.setAttribute("kintai_pay", kintai_pay);
 
 		Zeikin zeikin = kyuyoService.calculateZeikin(shain.getKihon_pay());
-
 		req.setAttribute("shain", shain);
 		req.setAttribute("zeikin", zeikin);
 

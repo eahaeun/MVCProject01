@@ -19,6 +19,7 @@ public class KyuyoRegistHandler implements CommandHandler {
 		int sikyu_pay = Integer.parseInt(req.getParameter("sikyu_pay"));
 		int kojyo_pay = Integer.parseInt(req.getParameter("kojyo_pay"));
 
+		// 받아온 사원번호,귀속연월,지급액,공제액을 급여T에 입력
 		try {
 			kyuyoService.insertPay(shain_no, kizoku_ym, sikyu_pay, kojyo_pay);
 			return "/WEB-INF/view/pay/kyuyoRegistSuccess.jsp";

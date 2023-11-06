@@ -11,6 +11,8 @@
 </head>
 <body>
 	<%@ include file="/WEB-INF/view/header.jsp"%>
+	
+	<!-- 該当する社員番号が存在しない場合警告表示 -->
 	<c:if test="${empty shain}">
 		<script>
 			alert("該当する社員番号は存在しません。");
@@ -27,6 +29,7 @@
 	</form>
 	<br />
 
+	<!-- 社員の基本情報を表示 -->
 	<table>
 		<tr>
 			<th>社員番号</th>
@@ -46,6 +49,7 @@
 		</tr>
 	</table>
 
+	<!-- 給与情報の入力欄を表示 -->
 	<form action="kyuyoCalculate.do" method="post"
 		onsubmit="return validateForm();">
 		<div class="search-box">
@@ -86,6 +90,8 @@
 				</div>
 			</div>
 		</div>
+		
+		<!-- 社員番号を再び転送 -->
 		<input type="hidden" name="shain_number" value="${shain.shain_no}">
 		<div class="search-box" align="center">
 			<input class="search-button" type="submit" value="計算">

@@ -13,6 +13,7 @@ public class KyuyoDeleteHandler implements CommandHandler {
 	public String process(HttpServletRequest req, HttpServletResponse res) throws Exception {
 		String shain_no = req.getParameter("shain_no");
 		String kizoku_ym = req.getParameter("kizoku_ym");
+		//받아온 사원번호를 재차 req영역에 저장
 		req.getSession().setAttribute("shain_no", shain_no);
 		kyuyoService.deleteKyuyo(kizoku_ym, shain_no);
 		return "/WEB-INF/view/pay/kyuyoDeleteSuccess.jsp";

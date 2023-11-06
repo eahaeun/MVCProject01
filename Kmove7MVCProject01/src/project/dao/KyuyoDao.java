@@ -17,7 +17,7 @@ import project.model.bean.KyuyoList;
 
 public class KyuyoDao {
 
-	// 데이터 삽입 메서드
+	// 급여 목록 삽입 메서드
 	public void insert(Connection conn, Kyuyo kyuyo) throws SQLException {
 		PreparedStatement pstmt = null;
 		try {
@@ -101,21 +101,25 @@ public class KyuyoDao {
 		}
 	}
 
+	// 급여 목록 변환 메서드
 	private KyuyoList convertKyuyoList(ResultSet rs) throws SQLException {
 		return new KyuyoList(rs.getString("kizoku_ym"), rs.getInt("shain_count"), rs.getInt("total_sikyu_pay"),
 				rs.getInt("total_kojyo_pay"));
 	}
 
+	// 급여 변환 메서드
 	private Kyuyo convertKyuyo(ResultSet rs) throws SQLException {
 		return new Kyuyo(rs.getString("shain_no"), rs.getString("kizoku_ym"), rs.getInt("sikyu_pay"),
 				rs.getInt("kojyo_pay"));
 	}
 
+	// 급여 상세 변환 메서드
 	private KyuyoDetail convertKyuyoDetail(ResultSet rs) throws SQLException {
 		return new KyuyoDetail(rs.getString("shain_nm"), toSDF(rs.getTimestamp("nyusha_ymd")), rs.getString("busho_nm"),
 				rs.getString("yakushoku_nm"), rs.getInt("kihon_pay"), rs.getInt("sikyu_pay"), rs.getInt("kojyo_pay"));
 	}
 
+	// 날짜 변환 메서드
 	private String toSDF(Timestamp timestamp) {
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 		return sdf.format(new Date(timestamp.getTime()));
