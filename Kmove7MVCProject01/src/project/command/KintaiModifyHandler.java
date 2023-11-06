@@ -1,5 +1,7 @@
 package project.command;
 
+import java.io.IOException;
+import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
@@ -32,8 +34,10 @@ public class KintaiModifyHandler implements CommandHandler{
 	}
 	
 	private String processForm(HttpServletRequest req, HttpServletResponse res) throws Exception {
-		String SHAIN_NO = req.getParameter("SHAIN_NO");
-		List<Kintai> kintaiList = kinSearchService.getSearchList(SHAIN_NO);
+		String noValue = req.getParameter("KINTAI_NO");
+		int kintaiNo = Integer.parseInt(noValue);
+
+		List<Kintai> kintaiList = kinSearchService.getSearchList(kintaiNo);
 		
 		if (kintaiList == null) {
 			return "/WEB-INF/view/kintai/kintaiSearch.jsp";
@@ -46,11 +50,13 @@ public class KintaiModifyHandler implements CommandHandler{
 	private String processSubmit(HttpServletRequest req, HttpServletResponse res) {
 		KintaiRequest regiReq = new KintaiRequest();
 		
-		String shain_no = regiReq.getSHAIN_NO();
-		Kintai kintai = kinService.searchShain(shain_no);
+		int kintai_no = regiReq.getKINTAI_NO();
+		List<Kintai> kintai = kinService.searchShain(kintai_no);
 		req.setAttribute("kintai", kintai);
 		
-		regiReq.setSHAIN_NO(req.getParameter("SHAIN_NO"));
+		String noValue = req.getParameter("KINTAI_NO");
+		int kintaiNO = Integer.parseInt(noValue);
+		regiReq.setKINTAI_NO(kintaiNO);
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd"); 
 		LocalDate localDate = LocalDate.parse(req.getParameter("NYUROKU_YMD"), formatter); 
 		regiReq.setNYUROKU_YMD(java.sql.Date.valueOf(localDate)); 

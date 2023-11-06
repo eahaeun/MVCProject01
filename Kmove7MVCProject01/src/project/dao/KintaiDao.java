@@ -62,18 +62,36 @@ public class KintaiDao {
 		}
 	}
 	
-	public int update(Connection conn, String SHAIN_NO, String KINTAI_KM, Date NYUROKU_YMD, Date KAISHI_YMD, Date SHURYO_YMD, int KINTAI_PAY) throws SQLException {
+	public List<Kintai> selectByKintaiNo(Connection conn, int KINTAI_NO) throws SQLException {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		try {
+			pstmt = conn.prepareStatement("select * from KINTAI where KINTAI_NO = ?");
+			pstmt.setInt(1, KINTAI_NO);
+			rs = pstmt.executeQuery();
+			List<Kintai> result = new ArrayList<>();
+			while (rs.next()) {
+				result.add(convertKintai(rs));
+			}
+			return result;
+		} finally {
+			JdbcUtil.close(rs);
+			JdbcUtil.close(pstmt);
+		}
+	}
+	
+	public int update(Connection conn, int KINTAI_NO, String KINTAI_KM, Date NYUROKU_YMD, Date KAISHI_YMD, Date SHURYO_YMD, int KINTAI_PAY) throws SQLException {
 		PreparedStatement pstmt = null;
 
 		try {
 			pstmt = conn.prepareStatement(
-					"update KINTAI SET KINTAI_KM = ?  NYUROKU_YMD = ? KAISHI_YMD = ? SHURYO_YMD = ? KINTAI_PAY = ? where SHAIN_NO=?");
+					"update KINTAI SET KINTAI_KM = ?  NYUROKU_YMD = ? KAISHI_YMD = ? SHURYO_YMD = ? KINTAI_PAY = ? where KINTAI_NO=?");
 			pstmt.setString(1, KINTAI_KM);
 			pstmt.setDate(2, NYUROKU_YMD);
 			pstmt.setDate(3, KAISHI_YMD);
 			pstmt.setDate(4, SHURYO_YMD);
 			pstmt.setInt(5, KINTAI_PAY);
-			pstmt.setString(6, SHAIN_NO);
+			pstmt.setInt(6, KINTAI_NO);
 			return pstmt.executeUpdate();
 		} finally {
 			JdbcUtil.close(pstmt);

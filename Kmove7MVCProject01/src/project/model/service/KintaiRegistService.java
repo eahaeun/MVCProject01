@@ -17,7 +17,10 @@ public class KintaiRegistService {
 			conn = ConnectionProvider.getConnection();
 			conn.setAutoCommit(false);
 			
-			kintaiDao.insert(conn, new Kintai(regiReq.getSHAIN_NO(), regiReq.getKINTAI_KM(), regiReq.getNYUROKU_YMD(), regiReq.getKAISHI_YMD(), regiReq.getSHURYO_YMD(), regiReq.getKINTAI_PAY()));
+			 int kintaiNo = regiReq.getKINTAI_NO();
+		     String shainNo = regiReq.getSHAIN_NO();
+			
+			kintaiDao.insert(conn, new Kintai(kintaiNo, shainNo, regiReq.getKINTAI_KM(), regiReq.getNYUROKU_YMD(), regiReq.getKAISHI_YMD(), regiReq.getSHURYO_YMD(), regiReq.getKINTAI_PAY()));
 			conn.commit();
 		} catch(Exception e) {
 			JdbcUtil.rollback(conn);

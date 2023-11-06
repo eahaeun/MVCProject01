@@ -12,12 +12,12 @@ import project.model.bean.Kintai;
 public class KintaiSearchService {
 	KintaiDao kintaiDao = new KintaiDao();
 	
-	public List<Kintai> getSearchList(String SHAIN_NO) throws SQLException {
+	public List<Kintai> getSearchList(int KINTAI_NO) throws SQLException {
 		Connection conn = null;
 		try {
 			conn = ConnectionProvider.getConnection();
 			conn.setAutoCommit(false);
-			List<Kintai> kintaiList = kintaiDao.selectByShainNo(conn, SHAIN_NO);
+			List<Kintai> kintaiList = kintaiDao.selectByKintaiNo(conn, KINTAI_NO);
 			conn.commit();	
 			return kintaiList;
 		} catch (SQLException e) {

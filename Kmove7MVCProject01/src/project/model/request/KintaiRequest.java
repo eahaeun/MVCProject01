@@ -4,6 +4,7 @@ import java.sql.Date;
 import java.util.Map;
 
 public class KintaiRequest {
+	private int KINTAI_NO;
 	private String SHAIN_NO;
 	private String KINTAI_KM;
 	private Date NYUROKU_YMD;
@@ -51,8 +52,8 @@ public class KintaiRequest {
 		}
 	}
 
-	public void setSHAIN_NO(String sHAIN_NO) {
-		SHAIN_NO = sHAIN_NO;
+	public void setSHAIN_NO(String SHAIN_NO) {
+		this.SHAIN_NO = SHAIN_NO;
 	}
 
 	public void setKINTAI_KM(String kINTAI_KM) {
@@ -76,7 +77,12 @@ public class KintaiRequest {
 		KINTAI_PAY = kINTAI_PAY;
 	}
 
-	
+	public int getKINTAI_NO() {
+		return KINTAI_NO;
+	}
+	public void setKINTAI_NO(int kINTAI_NO) {
+		KINTAI_NO = kINTAI_NO;
+	}
 
 }
 
