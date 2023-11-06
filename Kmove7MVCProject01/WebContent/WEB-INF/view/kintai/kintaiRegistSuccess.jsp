@@ -1,3 +1,4 @@
+<!-- 등록을 성공적으로 완료한 경우 표시되는 알림 페이지 -->
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>

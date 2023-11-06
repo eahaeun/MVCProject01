@@ -1,3 +1,4 @@
+<!-- 근태등록 페이지를 나타내며. 사용자가 여러 정보를 입력하여 등록할 수 있는 폼을 제공 -->
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
