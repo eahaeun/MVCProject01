@@ -10,7 +10,7 @@ import project.dao.BushoDao;
 import project.dao.ShainDao;
 import project.model.bean.Busho;
 import project.model.bean.Shain;
-
+// 직원 정보 수정
 public class ShainModifyService {
 	private ShainDao shainDao = new ShainDao();
 	private BushoDao bushoDao = new BushoDao();

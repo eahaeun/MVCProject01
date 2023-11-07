@@ -9,7 +9,7 @@ import jdbc.connection.ConnectionProvider;
 import project.dao.ShainDao;
 import project.model.bean.Shain;
 import project.model.request.ShainRequest;
-
+// 직원 정보 조회
 public class ShainListService {
 	ShainDao shainDao = new ShainDao();
 	

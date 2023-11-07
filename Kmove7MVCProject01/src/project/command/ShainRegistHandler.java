@@ -31,18 +31,18 @@ public class ShainRegistHandler implements CommandHandler {
 			return null;
 		}
 	}
-
+	// GET 요청 처리
 	private String processForm(HttpServletRequest req, HttpServletResponse res) {
 		
 		List<Busho> bushoList = shainRegistService.selectBusho();
 		req.setAttribute("bushoList", bushoList);
 		return FORM_VIEW;
 	}
-
+	// POST 요청 처리
 	private String processSubmit(HttpServletRequest req, HttpServletResponse res) throws ParseException {
 		List<Busho> bushoList = shainRegistService.selectBusho();
 		req.setAttribute("bushoList", bushoList);
-		
+		// 웹에서 입력된 데이터를 shainRequest에 저장
 		ShainRequest shainReq = new ShainRequest();
 		shainReq.setShain_no(req.getParameter("shain_no"));
 		shainReq.setShain_nm(req.getParameter("shain_nm"));
@@ -63,10 +63,10 @@ public class ShainRegistHandler implements CommandHandler {
 		shainReq.setZaishoku_st("在職");
 		
 		try {
-			shainRegistService.shain(shainReq);
+			shainRegistService.shain(shainReq); //Shain 등록 메서드 호출
 			return "/WEB-INF/view/emp/shainRegistSuccess.jsp";
 		} catch (DuplicatedException e) {
-			return FORM_VIEW; 
+			return FORM_VIEW; // 예외 발생 시에는 등록 폼으로 돌아간다.
 		}
 
 	}

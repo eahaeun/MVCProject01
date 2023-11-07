@@ -12,6 +12,7 @@ import jdbc.JdbcUtil;
 import project.model.bean.Shain;
 
 public class ShainDao {
+	// 사원 번호로 검색
 	public Shain selectByNo(Connection conn, String shain_no) throws SQLException {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -30,7 +31,7 @@ public class ShainDao {
 			JdbcUtil.close(pstmt);
 		}
 	}
-
+	// 사원 등록
 	public void insert(Connection conn, Shain shain) throws SQLException {
 		try (PreparedStatement pstmt = conn
 				.prepareStatement("insert into shain values(?, ?, ?, ?, ?, ?, ?, ?, ?, null, ?, ?, ?)")) {
@@ -49,7 +50,7 @@ public class ShainDao {
 			pstmt.executeUpdate();
 		}
 	}
-
+	
 	private Shain convertShain(ResultSet rs) throws SQLException {
 		return new Shain(rs.getString("shain_no"), rs.getString("shain_nm"), rs.getString("address"),
 				rs.getString("busho_nm"), rs.getString("yakushoku_nm"), rs.getInt("kihon_pay"),
@@ -111,7 +112,7 @@ public class ShainDao {
 			JdbcUtil.close(pstmt);
 		}
 	}
-
+	// 사원 검색
 	public Shain seaselect(Connection conn, String shain_no) throws SQLException {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -132,7 +133,7 @@ public class ShainDao {
 
 		return result;
 	}
-
+	// 사원 정보 수정
 	public Shain update(Connection conn, Shain shain) throws SQLException {
 		PreparedStatement pstmt = null;
 		Shain result = null;

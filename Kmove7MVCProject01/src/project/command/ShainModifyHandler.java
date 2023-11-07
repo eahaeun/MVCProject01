@@ -32,7 +32,7 @@ public class ShainModifyHandler implements CommandHandler {
 			return null;
 		}
 	}
-
+	// GET 요청
 	private String processForm(HttpServletRequest req, HttpServletResponse res) throws SQLException {
 		String shain_no = req.getParameter("shain_no");
 		Shain shain = shainService.searchShain(shain_no);

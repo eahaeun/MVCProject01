@@ -1,7 +1,7 @@
 package project.model.bean;
 
 import java.util.Date;
-
+// 데이터베이스 테이블과 연계된 데이터 관리
 public class Shain {
 	private String shain_no;
 	private String shain_nm;

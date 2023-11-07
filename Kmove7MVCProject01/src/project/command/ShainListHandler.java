@@ -15,17 +15,17 @@ public class ShainListHandler implements CommandHandler {
     @Override
     public String process(HttpServletRequest req, HttpServletResponse res) throws Exception {
         String listParam = req.getParameter("list");
-        // 재직
+        // 재직 버튼 클릭시 
         if ("在職者".equals(listParam)) {
         	List<Shain> shainList = shainService.getRetShainList();
         	req.setAttribute("shain", shainList);
             return "/WEB-INF/view/emp/retShainList.jsp";
-        }// 퇴직 
+        }// 퇴직 버튼 클릭시
         else if ("退社者".equals(listParam)) {
         	List<Shain> shainList = shainService.getCurShainList();
         	req.setAttribute("shain", shainList);
             return "/WEB-INF/view/emp/curShainList.jsp";
-        } // 전체 
+        } // 전체 버튼 클릭시
         else {
             List<Shain> shainList = shainService.getShainList();
             req.setAttribute("shain", shainList);

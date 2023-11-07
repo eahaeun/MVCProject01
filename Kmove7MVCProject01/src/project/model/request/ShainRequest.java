@@ -1,7 +1,7 @@
 package project.model.request;
 
 import java.util.Date;
-
+// 웹에서 입력된 데이터 관리
 public class ShainRequest {
 	private String shain_no;
 	private String shain_nm;

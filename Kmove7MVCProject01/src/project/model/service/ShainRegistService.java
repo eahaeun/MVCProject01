@@ -11,7 +11,7 @@ import project.dao.ShainDao;
 import project.model.bean.Busho;
 import project.model.bean.Shain;
 import project.model.request.ShainRequest;
-
+// 직원 정보 등록
 public class ShainRegistService {
 	private ShainDao shainDao = new ShainDao();
 	private BushoDao bushoDao = new BushoDao();
